@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "parking_spots#index"
   # Routes for the Spots_avaiable resource:
   # CREATE
   get "/spots_avaiables/new", :controller => "spots_avaiables", :action => "new"
