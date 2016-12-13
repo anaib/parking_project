@@ -1,5 +1,7 @@
 ActiveAdmin.register Car do
 
+ permit_params :type_of_car, :car_manf, :car_model, :car_registration, :car_color, :user_id
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
