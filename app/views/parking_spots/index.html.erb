@@ -40,8 +40,11 @@
         <td><%= parking_spot.neighborhood %></td>
         <td>
           <a href="/parking_spots/<%= parking_spot.id %>" class="btn btn-primary">Show</a>
-          <a href="/parking_spots/<%= parking_spot.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_parking_spot/<%= parking_spot.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == parking_spot.offer_user %>
+            <a href="/parking_spots/<%= parking_spot.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_parking_spot/<%= parking_spot.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
