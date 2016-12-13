@@ -1,0 +1,63 @@
+<!-- Validation failure messages -->
+<% if @spots_avaiable.errors.any? %>
+  <% @spots_avaiable.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Spots Avaiable #<%= @spots_avaiable.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_spots_avaiable/<%= @spots_avaiable.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for streets -->
+      <div class="form-group">
+        <label for="streets" class="control-label">
+          Streets
+        </label>
+
+        <input type="text" id="streets" name="streets" placeholder="Streets" class="form-control" value="<%= @spots_avaiable.streets %>">
+      </div>
+
+      <!-- Label and input for time -->
+      <div class="form-group">
+        <label for="time" class="control-label">
+          Time
+        </label>
+
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @spots_avaiable.time %>">
+      </div>
+
+      <!-- Label and input for thanks -->
+      <div class="checkbox">
+        <label for="thanks">
+          <input type="checkbox" id="thanks" name="thanks" value="1" <%= "checked" if @spots_avaiable.thanks %>>
+          Thanks
+        </label>
+      </div>
+
+      <!-- Label and input for neighborhood_id -->
+      <div class="form-group">
+        <label for="neighborhood_id" class="control-label">
+          Neighborhood
+        </label>
+
+        <input type="text" id="neighborhood_id" name="neighborhood_id" placeholder="Neighborhood" class="form-control" value="<%= @spots_avaiable.neighborhood_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Spots Avaiable
+      </button>
+      or
+      <a href="/spots_avaiables/<%= @spots_avaiable.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

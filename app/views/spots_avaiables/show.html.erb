@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h3>Spots Avaiable #<%= @spots_avaiable.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Streets</dt>
+      <dd><%= @spots_avaiable.streets %></dd>
+
+      <dt>Time</dt>
+      <dd><%= @spots_avaiable.time %></dd>
+
+      <dt>Thanks</dt>
+      <dd><%= @spots_avaiable.thanks %></dd>
+
+      <dt>Neighborhood</dt>
+      <dd><%= @spots_avaiable.neighborhood_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/spots_avaiables" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/spots_avaiables/<%= @spots_avaiable.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_spots_avaiable/<%= @spots_avaiable.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
