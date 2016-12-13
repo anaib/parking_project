@@ -1,6 +1,7 @@
 class InformationController < ApplicationController
   def index
-    @information = Information.page(params[:page]).per(10)
+    @q = Information.ransack(params[:q])
+    @information = @q.result(:distinct => true).includes(:user, :spots_avaiables).page(params[:page]).per(10)
 
     render("information/index.html.erb")
   end

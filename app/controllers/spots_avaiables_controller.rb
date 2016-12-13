@@ -1,6 +1,7 @@
 class SpotsAvaiablesController < ApplicationController
   def index
-    @spots_avaiables = SpotsAvaiable.page(params[:page]).per(10)
+    @q = SpotsAvaiable.ransack(params[:q])
+    @spots_avaiables = @q.result(:distinct => true).includes(:neighborhood).page(params[:page]).per(10)
 
     render("spots_avaiables/index.html.erb")
   end

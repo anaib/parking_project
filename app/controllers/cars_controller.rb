@@ -1,6 +1,7 @@
 class CarsController < ApplicationController
   def index
-    @cars = Car.page(params[:page]).per(10)
+    @q = Car.ransack(params[:q])
+    @cars = @q.result(:distinct => true).includes(:user).page(params[:page]).per(10)
 
     render("cars/index.html.erb")
   end

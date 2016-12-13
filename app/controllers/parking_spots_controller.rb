@@ -10,7 +10,8 @@ class ParkingSpotsController < ApplicationController
   end
 
   def index
-    @parking_spots = ParkingSpot.page(params[:page]).per(10)
+    @q = ParkingSpot.ransack(params[:q])
+    @parking_spots = @q.result(:distinct => true).includes(:offer_user).page(params[:page]).per(10)
     @location_hash = Gmaps4rails.build_markers(@parking_spots.where.not(:address_latitude => nil)) do |parking_spot, marker|
       marker.lat parking_spot.address_latitude
       marker.lng parking_spot.address_longitude
