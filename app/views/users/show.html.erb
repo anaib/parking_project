@@ -5,9 +5,6 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Email</dt>
-      <dd><%= @user.email %></dd>
-
       <dt>Password</dt>
       <dd><%= @user.password %></dd>
 
@@ -32,6 +29,12 @@
       <a href="/users" class="btn btn-primary">
         Back
       </a>
+      <a href="/users/<%= @user.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_user/<%= @user.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
     </div>
   </div>
 </div>
@@ -54,17 +57,134 @@
             <a href="/parking_spots/<%= parking_spot.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == parking_spot.offer_user %>
-              <a href="/parking_spots/<%= parking_spot.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_parking_spot/<%= parking_spot.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
+            <a href="/parking_spots/<%= parking_spot.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_parking_spot/<%= parking_spot.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_parking_spot" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for address -->
+      <div class="form-group">
+        <label for="address" class="control-label">
+          Address
+        </label>
+
+        <input type="text" id="address" name="address" placeholder="Address" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for city -->
+      <div class="form-group">
+        <label for="city" class="control-label">
+          City
+        </label>
+
+        <input type="text" id="city" name="city" placeholder="City" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for zipcode -->
+      <div class="form-group">
+        <label for="zipcode" class="control-label">
+          Zipcode
+        </label>
+
+        <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for time -->
+      <div class="form-group">
+        <label for="time" class="control-label">
+          Time
+        </label>
+
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for car_type -->
+      <div class="form-group">
+        <label for="car_type" class="control-label">
+          Car type
+        </label>
+
+        <input type="text" id="car_type" name="car_type" placeholder="Car type" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for offer_user_id -->
+      <div class="form-group">
+        <label for="offer_user_id" class="control-label">
+          Offer user
+        </label>
+
+        <%= select_tag(:offer_user_id, options_from_collection_for_select(User.all, :id, :created_at), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for type_of_parking -->
+      <div class="form-group">
+        <label for="type_of_parking" class="control-label">
+          Type of parking
+        </label>
+
+        <input type="text" id="type_of_parking" name="type_of_parking" placeholder="Type of parking" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for max_time -->
+      <div class="form-group">
+        <label for="max_time" class="control-label">
+          Max time
+        </label>
+
+        <input type="text" id="max_time" name="max_time" placeholder="Max time" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"></textarea>
+      </div>
+
+      <!-- Label and input for accept_user_id -->
+      <div class="form-group">
+        <label for="accept_user_id" class="control-label">
+          Accept user
+        </label>
+
+        <input type="text" id="accept_user_id" name="accept_user_id" placeholder="Accept user" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for neighborhood -->
+      <div class="form-group">
+        <label for="neighborhood" class="control-label">
+          Neighborhood
+        </label>
+
+        <input type="text" id="neighborhood" name="neighborhood" placeholder="Neighborhood" class="form-control" value="">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Parking Spot
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
@@ -87,17 +207,74 @@
             <a href="/cars/<%= car.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == car.user %>
-              <a href="/cars/<%= car.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_car/<%= car.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
+            <a href="/cars/<%= car.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_car/<%= car.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_car" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for type_of_car -->
+      <div class="form-group">
+        <label for="type_of_car" class="control-label">
+          Type of car
+        </label>
+
+        <input type="text" id="type_of_car" name="type_of_car" placeholder="Type of car" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for car_manf -->
+      <div class="form-group">
+        <label for="car_manf" class="control-label">
+          Car manf
+        </label>
+
+        <input type="text" id="car_manf" name="car_manf" placeholder="Car manf" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for car_model -->
+      <div class="form-group">
+        <label for="car_model" class="control-label">
+          Car model
+        </label>
+
+        <input type="text" id="car_model" name="car_model" placeholder="Car model" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for car_registration -->
+      <div class="form-group">
+        <label for="car_registration" class="control-label">
+          Car registration
+        </label>
+
+        <input type="text" id="car_registration" name="car_registration" placeholder="Car registration" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for car_color -->
+      <div class="form-group">
+        <label for="car_color" class="control-label">
+          Car color
+        </label>
+
+        <input type="text" id="car_color" name="car_color" placeholder="Car color" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= @user.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Car
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
@@ -120,17 +297,47 @@
             <a href="/information/<%= information.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == information.user %>
-              <a href="/information/<%= information.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_information/<%= information.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
+            <a href="/information/<%= information.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_information/<%= information.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_information" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for city -->
+      <div class="form-group">
+        <label for="city" class="control-label">
+          City
+        </label>
+
+        <input type="text" id="city" name="city" placeholder="City" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for neighborhood -->
+      <div class="form-group">
+        <label for="neighborhood" class="control-label">
+          Neighborhood
+        </label>
+
+        <input type="text" id="neighborhood" name="neighborhood" placeholder="Neighborhood" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= @user.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Information
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

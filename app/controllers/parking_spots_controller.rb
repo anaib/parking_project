@@ -1,14 +1,4 @@
 class ParkingSpotsController < ApplicationController
-  before_action :current_user_must_be_parking_spot_user, :only => [:edit, :update, :destroy]
-
-  def current_user_must_be_parking_spot_user
-    parking_spot = ParkingSpot.find(params[:id])
-
-    unless current_user == parking_spot.offer_user
-      redirect_to :back, :alert => "You are not authorized for that."
-    end
-  end
-
   def index
     @q = ParkingSpot.ransack(params[:q])
     @parking_spots = @q.result(:distinct => true).includes(:offer_user).page(params[:page]).per(10)
