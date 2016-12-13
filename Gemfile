@@ -48,3 +48,4 @@ gem 'activeadmin', :git => 'git://github.com/activeadmin/activeadmin.git', :ref 
 gem 'inherited_resources', :git => 'https://github.com/activeadmin/inherited_resources.git'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem "rollbar"
