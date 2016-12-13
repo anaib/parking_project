@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h1>
+    Parking spots
+    <a href="/parking_spots/new" class="btn btn-lg btn-success">New Parking spot</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Address</th>
+        <th>City</th>
+        <th>Zipcode</th>
+        <th>Time</th>
+        <th>Car type</th>
+        <th>Offer user</th>
+        <th>Type of parking</th>
+        <th>Max time</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Accept user</th>
+        <th>Neighborhood</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @parking_spots.each do |parking_spot| %>
+      <tr>
+        <td><%= parking_spot.address %></td>
+        <td><%= parking_spot.city %></td>
+        <td><%= parking_spot.zipcode %></td>
+        <td><%= parking_spot.time %></td>
+        <td><%= parking_spot.car_type %></td>
+        <td><%= parking_spot.offer_user_id %></td>
+        <td><%= parking_spot.type_of_parking %></td>
+        <td><%= parking_spot.max_time %></td>
+        <td><%= parking_spot.price %></td>
+        <td><%= parking_spot.description %></td>
+        <td><%= parking_spot.accept_user_id %></td>
+        <td><%= parking_spot.neighborhood %></td>
+        <td>
+          <a href="/parking_spots/<%= parking_spot.id %>" class="btn btn-primary">Show</a>
+          <a href="/parking_spots/<%= parking_spot.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_parking_spot/<%= parking_spot.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

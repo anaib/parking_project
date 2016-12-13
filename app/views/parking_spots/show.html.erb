@@ -1,0 +1,58 @@
+<div class="page-header">
+  <h3>Parking Spot #<%= @parking_spot.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Address</dt>
+      <dd><%= @parking_spot.address %></dd>
+
+      <dt>City</dt>
+      <dd><%= @parking_spot.city %></dd>
+
+      <dt>Zipcode</dt>
+      <dd><%= @parking_spot.zipcode %></dd>
+
+      <dt>Time</dt>
+      <dd><%= @parking_spot.time %></dd>
+
+      <dt>Car type</dt>
+      <dd><%= @parking_spot.car_type %></dd>
+
+      <dt>Offer user</dt>
+      <dd><%= @parking_spot.offer_user_id %></dd>
+
+      <dt>Type of parking</dt>
+      <dd><%= @parking_spot.type_of_parking %></dd>
+
+      <dt>Max time</dt>
+      <dd><%= @parking_spot.max_time %></dd>
+
+      <dt>Price</dt>
+      <dd><%= @parking_spot.price %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @parking_spot.description %></dd>
+
+      <dt>Accept user</dt>
+      <dd><%= @parking_spot.accept_user_id %></dd>
+
+      <dt>Neighborhood</dt>
+      <dd><%= @parking_spot.neighborhood %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/parking_spots" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/parking_spots/<%= @parking_spot.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_parking_spot/<%= @parking_spot.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
