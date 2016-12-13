@@ -1,4 +1,4 @@
-class ParkingSpot < ApplicationRecord
+class PublicParkingSpot < ApplicationRecord
   before_validation :geocode_address
 
   def geocode_address
@@ -19,6 +19,9 @@ class ParkingSpot < ApplicationRecord
     end
   end
   # Direct associations
+
+  belongs_to :accept_user,
+             :class_name => "User"
 
   belongs_to :offer_user,
              :class_name => "User"

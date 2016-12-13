@@ -1,6 +1,6 @@
 ActiveAdmin.register Information do
 
- permit_params :city, :neighborhood, :user_id
+ permit_params :city, :zipcode, :user_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

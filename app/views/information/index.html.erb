@@ -14,9 +14,16 @@
   </div>
 
 <div class="form-group">
-    <%= f.label :neighborhood_cont, "Neighborhood contains" %>
-    <%= f.text_field :neighborhood_cont, :class => "form-control", :placeholder => "Neighborhood contains" %>
+  <%= f.label :zipcode, "Zipcode" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :zipcode_gteq, :class => "form-control", :placeholder => "Zipcode greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :zipcode_lteq, :class => "form-control", :placeholder => "Zipcode less than or equal to" %>
+    </div>
   </div>
+</div>
 
 <div class="form-group">
           <%= f.label :created_at, "Created at" %>
@@ -118,7 +125,7 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>City</th>
-        <th>Neighborhood</th>
+        <th>Zipcode</th>
         <th>User</th>
         <th>Actions</th>
       </tr>
@@ -126,7 +133,7 @@
       <% @information.each do |information| %>
       <tr>
         <td><%= information.city %></td>
-        <td><%= information.neighborhood %></td>
+        <td><%= information.zipcode %></td>
         <td>
           <% if information.user.present? %>
             <a href="/users/<%= information.user.id %>">

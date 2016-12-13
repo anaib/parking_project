@@ -23,7 +23,7 @@ class InformationController < ApplicationController
     @information = Information.new
 
     @information.city = params[:city]
-    @information.neighborhood = params[:neighborhood]
+    @information.zipcode = params[:zipcode]
     @information.user_id = params[:user_id]
 
     save_status = @information.save
@@ -52,7 +52,7 @@ class InformationController < ApplicationController
     @information = Information.find(params[:id])
 
     @information.city = params[:city]
-    @information.neighborhood = params[:neighborhood]
+    @information.zipcode = params[:zipcode]
     @information.user_id = params[:user_id]
 
     save_status = @information.save

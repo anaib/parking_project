@@ -1,0 +1,28 @@
+<!-- Validation failure messages -->
+<% if @private_parking_spot.errors.any? %>
+  <% @private_parking_spot.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Private Parking Spot</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_private_parking_spot" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <button class="btn btn-success">
+        Create Private Parking Spot
+      </button>
+      or
+      <a href="/private_parking_spots">Cancel</a>
+    </form>
+  </div>
+</div>

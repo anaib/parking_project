@@ -1,6 +1,24 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root :to => "users#index"
+  root :to => "public_parking_spots#index"
+  # Routes for the Private_parking_spot resource:
+  # CREATE
+  get "/private_parking_spots/new", :controller => "private_parking_spots", :action => "new"
+  post "/create_private_parking_spot", :controller => "private_parking_spots", :action => "create"
+
+  # READ
+  get "/private_parking_spots", :controller => "private_parking_spots", :action => "index"
+  get "/private_parking_spots/:id", :controller => "private_parking_spots", :action => "show"
+
+  # UPDATE
+  get "/private_parking_spots/:id/edit", :controller => "private_parking_spots", :action => "edit"
+  post "/update_private_parking_spot/:id", :controller => "private_parking_spots", :action => "update"
+
+  # DELETE
+  get "/delete_private_parking_spot/:id", :controller => "private_parking_spots", :action => "destroy"
+  #------------------------------
+
   # Routes for the Spots_avaiable resource:
   # CREATE
   get "/spots_avaiables/new", :controller => "spots_avaiables", :action => "new"
@@ -52,39 +70,29 @@ Rails.application.routes.draw do
   get "/delete_car/:id", :controller => "cars", :action => "destroy"
   #------------------------------
 
-  # Routes for the Parking_spot resource:
+  # Routes for the Public_parking_spot resource:
   # CREATE
-  get "/parking_spots/new", :controller => "parking_spots", :action => "new"
-  post "/create_parking_spot", :controller => "parking_spots", :action => "create"
+  get "/public_parking_spots/new", :controller => "public_parking_spots", :action => "new"
+  post "/create_public_parking_spot", :controller => "public_parking_spots", :action => "create"
 
   # READ
-  get "/parking_spots", :controller => "parking_spots", :action => "index"
-  get "/parking_spots/:id", :controller => "parking_spots", :action => "show"
+  get "/public_parking_spots", :controller => "public_parking_spots", :action => "index"
+  get "/public_parking_spots/:id", :controller => "public_parking_spots", :action => "show"
 
   # UPDATE
-  get "/parking_spots/:id/edit", :controller => "parking_spots", :action => "edit"
-  post "/update_parking_spot/:id", :controller => "parking_spots", :action => "update"
+  get "/public_parking_spots/:id/edit", :controller => "public_parking_spots", :action => "edit"
+  post "/update_public_parking_spot/:id", :controller => "public_parking_spots", :action => "update"
 
   # DELETE
-  get "/delete_parking_spot/:id", :controller => "parking_spots", :action => "destroy"
+  get "/delete_public_parking_spot/:id", :controller => "public_parking_spots", :action => "destroy"
   #------------------------------
 
+  devise_for :users
   # Routes for the User resource:
-  # CREATE
-  get "/users/new", :controller => "users", :action => "new"
-  post "/create_user", :controller => "users", :action => "create"
-
   # READ
   get "/users", :controller => "users", :action => "index"
   get "/users/:id", :controller => "users", :action => "show"
 
-  # UPDATE
-  get "/users/:id/edit", :controller => "users", :action => "edit"
-  post "/update_user/:id", :controller => "users", :action => "update"
-
-  # DELETE
-  get "/delete_user/:id", :controller => "users", :action => "destroy"
-  #------------------------------
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,81 @@
+<div class="page-header">
+  <h1>
+    Public parking spots
+    <a href="/public_parking_spots/new" class="btn btn-lg btn-success">New Public parking spot</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Address</th>
+        <th>City</th>
+        <th>Zipcode</th>
+        <th>Time</th>
+        <th>Car type</th>
+        <th>Offer user</th>
+        <th>Type of parking</th>
+        <th>Max time</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Accept user</th>
+        <th>Neighborhood</th>
+        <th>Already paid</th>
+        <th>Paid time</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @public_parking_spots.each do |public_parking_spot| %>
+      <tr>
+        <td><%= public_parking_spot.address %></td>
+        <td><%= public_parking_spot.city %></td>
+        <td><%= public_parking_spot.zipcode %></td>
+        <td><%= public_parking_spot.time %></td>
+        <td><%= public_parking_spot.car_type %></td>
+        <td>
+          <% if public_parking_spot.offer_user.present? %>
+            <a href="/users/<%= public_parking_spot.offer_user.id %>">
+              <%= public_parking_spot.offer_user.created_at %>
+            </a>
+          <% end %>
+        </td>
+        <td><%= public_parking_spot.type_of_parking %></td>
+        <td><%= public_parking_spot.max_time %></td>
+        <td><%= public_parking_spot.price %></td>
+        <td><%= public_parking_spot.description %></td>
+        <td>
+          <% if public_parking_spot.accept_user.present? %>
+            <a href="/users/<%= public_parking_spot.accept_user.id %>">
+              <%= public_parking_spot.accept_user.created_at %>
+            </a>
+          <% end %>
+        </td>
+        <td><%= public_parking_spot.neighborhood %></td>
+        <td><%= public_parking_spot.already_paid %></td>
+        <td><%= public_parking_spot.paid_time %></td>
+        <td>
+          <a href="/public_parking_spots/<%= public_parking_spot.id %>" class="btn btn-primary">Show</a>
+          
+          <% if current_user == public_parking_spot.offer_user %>
+            <a href="/public_parking_spots/<%= public_parking_spot.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_public_parking_spot/<%= public_parking_spot.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+    <%= paginate @public_parking_spots, theme: 'twitter-bootstrap-4' %>
+  </div>
+</div>
+
+<script src="//maps.google.com/maps/api/js?v=3.24&key=AIzaSyCOTPWiuvyyo6sKoIBzKA4-1ol-vTOIOlM"></script>
+<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+<script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'location_map'}}, function(){
+    markers = handler.addMarkers(<%= raw @location_hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>
