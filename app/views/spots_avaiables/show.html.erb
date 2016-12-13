@@ -15,7 +15,13 @@
       <dd><%= @spots_avaiable.thanks %></dd>
 
       <dt>Neighborhood</dt>
-      <dd><%= @spots_avaiable.neighborhood_id %></dd>
+      <dd>
+        <% if @spots_avaiable.neighborhood.present? %>
+          <a href="/information/<%= @spots_avaiable.neighborhood_id %>">
+            <%= @spots_avaiable.neighborhood.city %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

@@ -21,7 +21,13 @@
       <dd><%= @car.car_color %></dd>
 
       <dt>User</dt>
-      <dd><%= @car.user_id %></dd>
+      <dd>
+        <% if @car.user.present? %>
+          <a href="/users/<%= @car.user_id %>">
+            <%= @car.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

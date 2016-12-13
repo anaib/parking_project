@@ -19,7 +19,13 @@
       <tr>
         <td><%= information.city %></td>
         <td><%= information.neighborhood %></td>
-        <td><%= information.user.email %></td>
+        <td>
+          <% if information.user.present? %>
+            <a href="/users/<%= information.user.id %>">
+              <%= information.user.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/information/<%= information.id %>" class="btn btn-primary">Show</a>
           <a href="/information/<%= information.id %>/edit" class="btn btn-warning">Edit</a>

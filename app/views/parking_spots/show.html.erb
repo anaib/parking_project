@@ -25,7 +25,13 @@
       <dd><%= @parking_spot.car_type %></dd>
 
       <dt>Offer user</dt>
-      <dd><%= @parking_spot.offer_user_id %></dd>
+      <dd>
+        <% if @parking_spot.offer_user.present? %>
+          <a href="/users/<%= @parking_spot.offer_user_id %>">
+            <%= @parking_spot.offer_user.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Type of parking</dt>
       <dd><%= @parking_spot.type_of_parking %></dd>

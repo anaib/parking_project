@@ -12,7 +12,13 @@
       <dd><%= @information.neighborhood %></dd>
 
       <dt>User</dt>
-      <dd><%= @information.user_id %></dd>
+      <dd>
+        <% if @information.user.present? %>
+          <a href="/users/<%= @information.user_id %>">
+            <%= @information.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

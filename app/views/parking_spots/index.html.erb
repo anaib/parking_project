@@ -31,7 +31,13 @@
         <td><%= parking_spot.zipcode %></td>
         <td><%= parking_spot.time %></td>
         <td><%= parking_spot.car_type %></td>
-        <td><%= parking_spot.offer_user.email %></td>
+        <td>
+          <% if parking_spot.offer_user.present? %>
+            <a href="/users/<%= parking_spot.offer_user.id %>">
+              <%= parking_spot.offer_user.email %>
+            </a>
+          <% end %>
+        </td>
         <td><%= parking_spot.type_of_parking %></td>
         <td><%= parking_spot.max_time %></td>
         <td><%= parking_spot.price %></td>
