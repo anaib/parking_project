@@ -1,0 +1,82 @@
+<!-- Validation failure messages -->
+<% if @car.errors.any? %>
+  <% @car.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Car</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_car" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for type_of_car -->
+      <div class="form-group">
+        <label for="type_of_car" class="control-label">
+          Type of car
+        </label>
+
+        <input type="text" id="type_of_car" name="type_of_car" placeholder="Type of car" class="form-control" value="<%= @car.type_of_car %>">
+      </div>
+
+      <!-- Label and input for car_manf -->
+      <div class="form-group">
+        <label for="car_manf" class="control-label">
+          Car manf
+        </label>
+
+        <input type="text" id="car_manf" name="car_manf" placeholder="Car manf" class="form-control" value="<%= @car.car_manf %>">
+      </div>
+
+      <!-- Label and input for car_model -->
+      <div class="form-group">
+        <label for="car_model" class="control-label">
+          Car model
+        </label>
+
+        <input type="text" id="car_model" name="car_model" placeholder="Car model" class="form-control" value="<%= @car.car_model %>">
+      </div>
+
+      <!-- Label and input for car_registration -->
+      <div class="form-group">
+        <label for="car_registration" class="control-label">
+          Car registration
+        </label>
+
+        <input type="text" id="car_registration" name="car_registration" placeholder="Car registration" class="form-control" value="<%= @car.car_registration %>">
+      </div>
+
+      <!-- Label and input for car_color -->
+      <div class="form-group">
+        <label for="car_color" class="control-label">
+          Car color
+        </label>
+
+        <input type="text" id="car_color" name="car_color" placeholder="Car color" class="form-control" value="<%= @car.car_color %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @car.user_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Car
+      </button>
+      or
+      <a href="/cars">Cancel</a>
+    </form>
+  </div>
+</div>
