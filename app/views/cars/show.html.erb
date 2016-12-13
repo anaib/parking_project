@@ -24,7 +24,7 @@
       <dd>
         <% if @car.user.present? %>
           <a href="/users/<%= @car.user_id %>">
-            <%= @car.user.email %>
+            <%= @car.user.created_at %>
           </a>
         <% end %>
       </dd>

@@ -64,7 +64,13 @@
       </div>
 
       <!-- Label and input for offer_user_id -->
-      <input type="hidden" name="offer_user_id" value="<%= current_user.id %>">
+      <div class="form-group">
+        <label for="offer_user_id" class="control-label">
+          Offer user
+        </label>
+
+        <%= select_tag(:offer_user_id, options_from_collection_for_select(User.all, :id, :created_at, @parking_spot.offer_user_id), :class => "form-control") %>
+      </div>
 
       <!-- Label and input for type_of_parking -->
       <div class="form-group">

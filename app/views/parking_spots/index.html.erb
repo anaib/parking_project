@@ -34,7 +34,7 @@
         <td>
           <% if parking_spot.offer_user.present? %>
             <a href="/users/<%= parking_spot.offer_user.id %>">
-              <%= parking_spot.offer_user.email %>
+              <%= parking_spot.offer_user.created_at %>
             </a>
           <% end %>
         </td>
@@ -46,11 +46,8 @@
         <td><%= parking_spot.neighborhood %></td>
         <td>
           <a href="/parking_spots/<%= parking_spot.id %>" class="btn btn-primary">Show</a>
-          
-          <% if current_user == parking_spot.offer_user %>
-            <a href="/parking_spots/<%= parking_spot.id %>/edit" class="btn btn-warning">Edit</a>
-            <a href="/delete_parking_spot/<%= parking_spot.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-          <% end %>
+          <a href="/parking_spots/<%= parking_spot.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_parking_spot/<%= parking_spot.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
       <% end %>
