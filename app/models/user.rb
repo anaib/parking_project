@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :cars,
+             :dependent => :destroy
+
   has_many   :parking_spots,
              :foreign_key => "offer_user_id",
              :dependent => :destroy
