@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   # Validations
 
+  validates :city, :presence => true
+
   validates :first_name, :presence => true
 
   validates :last_name, :presence => true
