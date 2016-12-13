@@ -6,6 +6,7 @@ class InformationController < ApplicationController
   end
 
   def show
+    @spots_avaiable = SpotsAvaiable.new
     @information = Information.find(params[:id])
 
     render("information/show.html.erb")

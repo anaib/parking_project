@@ -57,6 +57,52 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_spots_avaiable" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for streets -->
+      <div class="form-group">
+        <label for="streets" class="control-label">
+          Streets
+        </label>
+
+        <input type="text" id="streets" name="streets" placeholder="Streets" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for time -->
+      <div class="form-group">
+        <label for="time" class="control-label">
+          Time
+        </label>
+
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for thanks -->
+      <div class="checkbox">
+        <label for="thanks">
+          <input type="checkbox" id="thanks" name="thanks" value="1" <%= "checked" if @spots_avaiable.thanks %>>
+          Thanks
+        </label>
+      </div>
+
+      <!-- Label and input for neighborhood_id -->
+      <div class="form-group">
+        <label for="neighborhood_id" class="control-label">
+          Neighborhood
+        </label>
+
+        <%= select_tag(:neighborhood_id, options_from_collection_for_select(Information.all, :id, :city), :class => "form-control") %>
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Spots Avaiable
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
