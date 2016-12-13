@@ -25,7 +25,7 @@
         <td><%= car.car_model %></td>
         <td><%= car.car_registration %></td>
         <td><%= car.car_color %></td>
-        <td><%= car.user_id %></td>
+        <td><%= car.user.email %></td>
         <td>
           <a href="/cars/<%= car.id %>" class="btn btn-primary">Show</a>
           <a href="/cars/<%= car.id %>/edit" class="btn btn-warning">Edit</a>
