@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Information
+    <a href="/information/new" class="btn btn-lg btn-success">New Information</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>City</th>
+        <th>Neighborhood</th>
+        <th>User</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @information.each do |information| %>
+      <tr>
+        <td><%= information.city %></td>
+        <td><%= information.neighborhood %></td>
+        <td><%= information.user_id %></td>
+        <td>
+          <a href="/information/<%= information.id %>" class="btn btn-primary">Show</a>
+          <a href="/information/<%= information.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_information/<%= information.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

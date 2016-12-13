@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Information resource:
+  # CREATE
+  get "/information/new", :controller => "information", :action => "new"
+  post "/create_information", :controller => "information", :action => "create"
+
+  # READ
+  get "/information", :controller => "information", :action => "index"
+  get "/information/:id", :controller => "information", :action => "show"
+
+  # UPDATE
+  get "/information/:id/edit", :controller => "information", :action => "edit"
+  post "/update_information/:id", :controller => "information", :action => "update"
+
+  # DELETE
+  get "/delete_information/:id", :controller => "information", :action => "destroy"
+  #------------------------------
+
   # Routes for the Car resource:
   # CREATE
   get "/cars/new", :controller => "cars", :action => "new"

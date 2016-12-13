@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Information #<%= @information.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>City</dt>
+      <dd><%= @information.city %></dd>
+
+      <dt>Neighborhood</dt>
+      <dd><%= @information.neighborhood %></dd>
+
+      <dt>User</dt>
+      <dd><%= @information.user_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/information" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/information/<%= @information.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_information/<%= @information.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
