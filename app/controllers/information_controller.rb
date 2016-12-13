@@ -1,6 +1,6 @@
 class InformationController < ApplicationController
   def index
-    @information = Information.all
+    @information = Information.page(params[:page]).per(10)
 
     render("information/index.html.erb")
   end

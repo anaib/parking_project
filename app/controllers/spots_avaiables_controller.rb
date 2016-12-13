@@ -1,6 +1,6 @@
 class SpotsAvaiablesController < ApplicationController
   def index
-    @spots_avaiables = SpotsAvaiable.all
+    @spots_avaiables = SpotsAvaiable.page(params[:page]).per(10)
 
     render("spots_avaiables/index.html.erb")
   end

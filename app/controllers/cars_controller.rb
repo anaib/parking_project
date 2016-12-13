@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   def index
-    @cars = Car.all
+    @cars = Car.page(params[:page]).per(10)
 
     render("cars/index.html.erb")
   end
