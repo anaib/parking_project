@@ -11,6 +11,11 @@ class ParkingSpotsController < ApplicationController
 
   def index
     @parking_spots = ParkingSpot.all
+    @location_hash = Gmaps4rails.build_markers(@parking_spots.where.not(:address_latitude => nil)) do |parking_spot, marker|
+      marker.lat parking_spot.address_latitude
+      marker.lng parking_spot.address_longitude
+      marker.infowindow "<h5><a href='/parking_spots/#{parking_spot.id}'>#{parking_spot.created_at}</a></h5><small>#{parking_spot.address_formatted_address}</small>"
+    end
 
     render("parking_spots/index.html.erb")
   end
