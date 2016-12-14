@@ -1,8 +1,8 @@
-class Information < ApplicationRecord
+class SpotsInformation < ApplicationRecord
   # Direct associations
 
   has_many   :spots_avaiables,
-             :foreign_key => "zipcode",
+             :foreign_key => "info_id",
              :dependent => :destroy
 
   belongs_to :user

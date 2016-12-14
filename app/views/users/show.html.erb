@@ -111,20 +111,20 @@
         Information
       </li>
 
-      <% @user.information.each do |information| %>
+      <% @user.information.each do |spots_information| %>
         <li class="list-group-item">
-          <a href="/information/<%= information.id %>">
-            <%= information.city %>
+          <a href="/spots_informations/<%= spots_information.id %>">
+            <%= spots_information.city %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/information/<%= information.id %>" class="btn btn-primary">
+            <a href="/spots_informations/<%= spots_information.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == information.user %>
-              <a href="/information/<%= information.id %>/edit" class="btn btn-warning">
+            <%if current_user == spots_information.user %>
+              <a href="/spots_informations/<%= spots_information.id %>/edit" class="btn btn-warning">
                 <i class="fa fa-edit"></i>
               </a>
-              <a href="/delete_information/<%= information.id %>" class="btn btn-danger" rel="nofollow">
+              <a href="/delete_spots_information/<%= spots_information.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
               </a>
             <% end %>

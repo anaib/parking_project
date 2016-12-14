@@ -4,7 +4,7 @@ class CreateSpotsAvaiables < ActiveRecord::Migration
       t.string :streets
       t.time :time
       t.boolean :thanks
-      t.integer :zipcode
+      t.integer :info_id
 
       t.timestamps
 

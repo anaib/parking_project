@@ -24,7 +24,7 @@ class SpotsAvaiablesController < ApplicationController
     @spots_avaiable.streets = params[:streets]
     @spots_avaiable.time = params[:time]
     @spots_avaiable.thanks = params[:thanks]
-    @spots_avaiable.zipcode = params[:zipcode]
+    @spots_avaiable.info_id = params[:info_id]
 
     save_status = @spots_avaiable.save
 
@@ -54,7 +54,7 @@ class SpotsAvaiablesController < ApplicationController
     @spots_avaiable.streets = params[:streets]
     @spots_avaiable.time = params[:time]
     @spots_avaiable.thanks = params[:thanks]
-    @spots_avaiable.zipcode = params[:zipcode]
+    @spots_avaiable.info_id = params[:info_id]
 
     save_status = @spots_avaiable.save
 

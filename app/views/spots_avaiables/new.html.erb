@@ -44,13 +44,13 @@
         </label>
       </div>
 
-      <!-- Label and input for zipcode -->
+      <!-- Label and input for info_id -->
       <div class="form-group">
-        <label for="zipcode" class="control-label">
-          Zipcode
+        <label for="info_id" class="control-label">
+          Info
         </label>
 
-        <%= select_tag(:zipcode, options_from_collection_for_select(Information.all, :id, :city, @spots_avaiable.zipcode), :class => "form-control") %>
+        <%= select_tag(:info_id, options_from_collection_for_select(SpotsInformation.all, :id, :city, @spots_avaiable.info_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">

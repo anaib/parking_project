@@ -12,11 +12,6 @@ class PublicParkingSpotsController < ApplicationController
   def index
     @q = PublicParkingSpot.ransack(params[:q])
     @public_parking_spots = @q.result(:distinct => true).includes(:offer_user, :accept_user).page(params[:page]).per(10)
-    @location_hash = Gmaps4rails.build_markers(@public_parking_spots.where.not(:address_latitude => nil)) do |public_parking_spot, marker|
-      marker.lat public_parking_spot.address_latitude
-      marker.lng public_parking_spot.address_longitude
-      marker.infowindow "<h5><a href='/public_parking_spots/#{public_parking_spot.id}'>#{public_parking_spot.created_at}</a></h5><small>#{public_parking_spot.address_formatted_address}</small>"
-    end
 
     render("public_parking_spots/index.html.erb")
   end
@@ -44,12 +39,13 @@ class PublicParkingSpotsController < ApplicationController
     @public_parking_spot.pub_offer_user_id = params[:pub_offer_user_id]
     @public_parking_spot.type_of_parking = params[:type_of_parking]
     @public_parking_spot.max_time = params[:max_time]
-    @public_parking_spot.price = params[:price]
+    @public_parking_spot.pub_price = params[:pub_price]
     @public_parking_spot.description = params[:description]
     @public_parking_spot.pub_accept_user_id = params[:pub_accept_user_id]
-    @public_parking_spot.neighborhood = params[:neighborhood]
     @public_parking_spot.already_paid = params[:already_paid]
     @public_parking_spot.paid_time = params[:paid_time]
+    @public_parking_spot.pub_date = params[:pub_date]
+    @public_parking_spot.pub_points = params[:pub_points]
 
     save_status = @public_parking_spot.save
 
@@ -84,12 +80,13 @@ class PublicParkingSpotsController < ApplicationController
     @public_parking_spot.pub_offer_user_id = params[:pub_offer_user_id]
     @public_parking_spot.type_of_parking = params[:type_of_parking]
     @public_parking_spot.max_time = params[:max_time]
-    @public_parking_spot.price = params[:price]
+    @public_parking_spot.pub_price = params[:pub_price]
     @public_parking_spot.description = params[:description]
     @public_parking_spot.pub_accept_user_id = params[:pub_accept_user_id]
-    @public_parking_spot.neighborhood = params[:neighborhood]
     @public_parking_spot.already_paid = params[:already_paid]
     @public_parking_spot.paid_time = params[:paid_time]
+    @public_parking_spot.pub_date = params[:pub_date]
+    @public_parking_spot.pub_points = params[:pub_points]
 
     save_status = @public_parking_spot.save
 

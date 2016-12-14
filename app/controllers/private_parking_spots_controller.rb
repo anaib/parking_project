@@ -24,10 +24,11 @@ class PrivateParkingSpotsController < ApplicationController
     @private_parking_spot.address = params[:address]
     @private_parking_spot.city = params[:city]
     @private_parking_spot.zipcode = params[:zipcode]
-    @private_parking_spot.date = params[:date]
-    @private_parking_spot.time = params[:time]
-    @private_parking_spot.price = params[:price]
+    @private_parking_spot.pri_date = params[:pri_date]
+    @private_parking_spot.pri_time = params[:pri_time]
+    @private_parking_spot.pri_price = params[:pri_price]
     @private_parking_spot.pri_offer_user_id = params[:pri_offer_user_id]
+    @private_parking_spot.pri_points = params[:pri_points]
     @private_parking_spot.pri_accept_user_id = params[:pri_accept_user_id]
 
     save_status = @private_parking_spot.save
@@ -58,10 +59,11 @@ class PrivateParkingSpotsController < ApplicationController
     @private_parking_spot.address = params[:address]
     @private_parking_spot.city = params[:city]
     @private_parking_spot.zipcode = params[:zipcode]
-    @private_parking_spot.date = params[:date]
-    @private_parking_spot.time = params[:time]
-    @private_parking_spot.price = params[:price]
+    @private_parking_spot.pri_date = params[:pri_date]
+    @private_parking_spot.pri_time = params[:pri_time]
+    @private_parking_spot.pri_price = params[:pri_price]
     @private_parking_spot.pri_offer_user_id = params[:pri_offer_user_id]
+    @private_parking_spot.pri_points = params[:pri_points]
     @private_parking_spot.pri_accept_user_id = params[:pri_accept_user_id]
 
     save_status = @private_parking_spot.save

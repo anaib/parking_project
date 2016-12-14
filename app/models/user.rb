@@ -17,6 +17,7 @@ class User < ApplicationRecord
              :dependent => :destroy
 
   has_many   :information,
+             :class_name => "SpotsInformation",
              :dependent => :destroy
 
   has_many   :cars,

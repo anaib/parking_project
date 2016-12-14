@@ -45,31 +45,31 @@
         <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode" class="form-control" value="<%= @private_parking_spot.zipcode %>">
       </div>
 
-      <!-- Label and input for date -->
+      <!-- Label and input for pri_date -->
       <div class="form-group">
-        <label for="date" class="control-label">
-          Date
+        <label for="pri_date" class="control-label">
+          Pri date
         </label>
 
-        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @private_parking_spot.date %>">
+        <input type="text" id="pri_date" name="pri_date" placeholder="Pri date" class="form-control" value="<%= @private_parking_spot.pri_date %>">
       </div>
 
-      <!-- Label and input for time -->
+      <!-- Label and input for pri_time -->
       <div class="form-group">
-        <label for="time" class="control-label">
-          Time
+        <label for="pri_time" class="control-label">
+          Pri time
         </label>
 
-        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @private_parking_spot.time %>">
+        <input type="text" id="pri_time" name="pri_time" placeholder="Pri time" class="form-control" value="<%= @private_parking_spot.pri_time %>">
       </div>
 
-      <!-- Label and input for price -->
+      <!-- Label and input for pri_price -->
       <div class="form-group">
-        <label for="price" class="control-label">
-          Price
+        <label for="pri_price" class="control-label">
+          Pri price
         </label>
 
-        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @private_parking_spot.price %>">
+        <input type="text" id="pri_price" name="pri_price" placeholder="Pri price" class="form-control" value="<%= @private_parking_spot.pri_price %>">
       </div>
 
       <!-- Label and input for pri_offer_user_id -->
@@ -79,6 +79,15 @@
         </label>
 
         <%= select_tag(:pri_offer_user_id, options_from_collection_for_select(User.all, :id, :created_at, @private_parking_spot.pri_offer_user_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for pri_points -->
+      <div class="form-group">
+        <label for="pri_points" class="control-label">
+          Pri points
+        </label>
+
+        <input type="text" id="pri_points" name="pri_points" placeholder="Pri points" class="form-control" value="<%= @private_parking_spot.pri_points %>">
       </div>
 
       <!-- Label and input for pri_accept_user_id -->
