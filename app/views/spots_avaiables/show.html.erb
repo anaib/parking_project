@@ -14,10 +14,10 @@
       <dt>Thanks</dt>
       <dd><%= @spots_avaiable.thanks %></dd>
 
-      <dt>Neighborhood</dt>
+      <dt>Zipcode</dt>
       <dd>
         <% if @spots_avaiable.neighborhood.present? %>
-          <a href="/information/<%= @spots_avaiable.neighborhood_id %>">
+          <a href="/information/<%= @spots_avaiable.zipcode %>">
             <%= @spots_avaiable.neighborhood.city %>
           </a>
         <% end %>

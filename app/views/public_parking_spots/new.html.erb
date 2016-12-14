@@ -1,0 +1,147 @@
+<!-- Validation failure messages -->
+<% if @public_parking_spot.errors.any? %>
+  <% @public_parking_spot.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Public Parking Spot</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_public_parking_spot" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for address -->
+      <div class="form-group">
+        <label for="address" class="control-label">
+          Address
+        </label>
+
+        <input type="text" id="address" name="address" placeholder="Address" class="form-control" value="<%= @public_parking_spot.address %>">
+      </div>
+
+      <!-- Label and input for city -->
+      <div class="form-group">
+        <label for="city" class="control-label">
+          City
+        </label>
+
+        <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @public_parking_spot.city %>">
+      </div>
+
+      <!-- Label and input for zipcode -->
+      <div class="form-group">
+        <label for="zipcode" class="control-label">
+          Zipcode
+        </label>
+
+        <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode" class="form-control" value="<%= @public_parking_spot.zipcode %>">
+      </div>
+
+      <!-- Label and input for time -->
+      <div class="form-group">
+        <label for="time" class="control-label">
+          Time
+        </label>
+
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @public_parking_spot.time %>">
+      </div>
+
+      <!-- Label and input for car_type -->
+      <div class="form-group">
+        <label for="car_type" class="control-label">
+          Car type
+        </label>
+
+        <input type="text" id="car_type" name="car_type" placeholder="Car type" class="form-control" value="<%= @public_parking_spot.car_type %>">
+      </div>
+
+      <!-- Label and input for offer_user_id -->
+      <input type="hidden" name="offer_user_id" value="<%= current_user.id %>">
+
+      <!-- Label and input for type_of_parking -->
+      <div class="form-group">
+        <label for="type_of_parking" class="control-label">
+          Type of parking
+        </label>
+
+        <input type="text" id="type_of_parking" name="type_of_parking" placeholder="Type of parking" class="form-control" value="<%= @public_parking_spot.type_of_parking %>">
+      </div>
+
+      <!-- Label and input for max_time -->
+      <div class="form-group">
+        <label for="max_time" class="control-label">
+          Max time
+        </label>
+
+        <input type="text" id="max_time" name="max_time" placeholder="Max time" class="form-control" value="<%= @public_parking_spot.max_time %>">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @public_parking_spot.price %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @public_parking_spot.description %></textarea>
+      </div>
+
+      <!-- Label and input for accept_user_id -->
+      <div class="form-group">
+        <label for="accept_user_id" class="control-label">
+          Accept user
+        </label>
+
+        <%= select_tag(:accept_user_id, options_from_collection_for_select(User.all, :id, :created_at, @public_parking_spot.accept_user_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for neighborhood -->
+      <div class="form-group">
+        <label for="neighborhood" class="control-label">
+          Neighborhood
+        </label>
+
+        <input type="text" id="neighborhood" name="neighborhood" placeholder="Neighborhood" class="form-control" value="<%= @public_parking_spot.neighborhood %>">
+      </div>
+
+      <!-- Label and input for already_paid -->
+      <div class="checkbox">
+        <label for="already_paid">
+          <input type="checkbox" id="already_paid" name="already_paid" value="1" <%= "checked" if @public_parking_spot.already_paid %>>
+          Already paid
+        </label>
+      </div>
+
+      <!-- Label and input for paid_time -->
+      <div class="form-group">
+        <label for="paid_time" class="control-label">
+          Paid time
+        </label>
+
+        <input type="text" id="paid_time" name="paid_time" placeholder="Paid time" class="form-control" value="<%= @public_parking_spot.paid_time %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Public Parking Spot
+      </button>
+      or
+      <a href="/public_parking_spots">Cancel</a>
+    </form>
+  </div>
+</div>

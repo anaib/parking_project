@@ -2,7 +2,7 @@ class Information < ApplicationRecord
   # Direct associations
 
   has_many   :spots_avaiables,
-             :foreign_key => "neighborhood_id",
+             :foreign_key => "zipcode",
              :dependent => :destroy
 
   belongs_to :user

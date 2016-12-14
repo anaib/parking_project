@@ -1,6 +1,6 @@
-class CreateParkingSpots < ActiveRecord::Migration
+class CreatePublicParkingSpots < ActiveRecord::Migration
   def change
-    create_table :parking_spots do |t|
+    create_table :public_parking_spots do |t|
       t.string :address
       t.string :city
       t.integer :zipcode
@@ -13,6 +13,8 @@ class CreateParkingSpots < ActiveRecord::Migration
       t.text :description
       t.integer :accept_user_id
       t.string :neighborhood
+      t.boolean :already_paid
+      t.string :paid_time
 
       t.timestamps
 

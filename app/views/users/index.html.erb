@@ -3,135 +3,33 @@
     Users
     <a href="/users/new" class="btn btn-lg btn-success">New User</a>
   </h1>
-</div><div class="row mb-1">
-  <div class="col-md-12">
-    <%= search_form_for @q, :class => "collapse", :id => "users_filters" do |f| %>
-      <p class="lead">Narrow results:</p>
-
-        <div class="form-group">
-  <%= f.label :points, "Points" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :points_gteq, :class => "form-control", :placeholder => "Points greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :points_lteq, :class => "form-control", :placeholder => "Points less than or equal to" %>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-  <%= f.label :phone_number, "Phone number" %>
-  <div class="row">
-    <div class='col-md-6 mb-1'>
-      <%= f.text_field :phone_number_gteq, :class => "form-control", :placeholder => "Phone number greater than or equal to" %>
-    </div>
-    <div class='col-md-6'>
-      <%= f.text_field :phone_number_lteq, :class => "form-control", :placeholder => "Phone number less than or equal to" %>
-    </div>
-  </div>
-</div>
-
-<div class="form-group">
-    <%= f.label :city_cont, "City contains" %>
-    <%= f.text_field :city_cont, :class => "form-control", :placeholder => "City contains" %>
-  </div>
-
-<div class="form-group">
-    <%= f.label :last_name_cont, "Last name contains" %>
-    <%= f.text_field :last_name_cont, :class => "form-control", :placeholder => "Last name contains" %>
-  </div>
-
-<div class="form-group">
-    <%= f.label :first_name_cont, "First name contains" %>
-    <%= f.text_field :first_name_cont, :class => "form-control", :placeholder => "First name contains" %>
-  </div>
-
-<div class="form-group">
-          <%= f.label :created_at, "Created at" %>
-          <div class="row">
-            <div class='col-md-6 mb-1'>
-              <div class='input-group date' id='created_atgteqPicker'>
-                  <%= f.text_field :created_at_gteq, :class => "form-control", :placeholder => "Created at greater than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-
-            <div class='col-md-6'>
-              <div class='input-group date' id='created_atlteqPicker'>
-                  <%= f.text_field :created_at_lteq, :class => "form-control", :placeholder => "Created at less than or equal to" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-            </div>
-          </div>
-      </div>
-      <script type="text/javascript">
-          $(function () {
-              $('#created_atgteqPicker').datetimepicker({
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atlteqPicker').datetimepicker({
-                  useCurrent: false,
-                  format: 'YYYY-MM-DD hh:mm:SS'
-              });
-              $('#created_atgteqPicker').on("dp.change", function (e) {
-                  $('#created_atlteqPicker').data("DateTimePicker").minDate(e.date);
-              });
-              $('#created_atlteqPicker').on("dp.change", function (e) {
-                  $('#created_atgteqPicker').data("DateTimePicker").maxDate(e.date);
-              });
-          });
-      </script>
-
-        <div class="form-group">
-      <%= f.label :cars_type_of_car_cont, "Car type_of_car contains" %>
-      <%= f.text_field :cars_type_of_car_cont, :class => "form-control", :placeholder => "Car type_of_car contains" %>
-    </div>
-
-<div class="form-group">
-      <%= f.label :information_city_cont, "Information city contains" %>
-      <%= f.text_field :information_city_cont, :class => "form-control", :placeholder => "Information city contains" %>
-    </div>
-
-      <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
-
-      <a href="/users" class="btn btn-default btn-block mb-1">Clear filters</a>
-    <% end %>
-    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#users_filters">
-      Show Filters
-    </a>
-  </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Password</th>
         <th>First name</th>
         <th>Last name</th>
         <th>City</th>
         <th>Phone number</th>
         <th>Points</th>
+        <th>Email</th>
+        <th>Password</th>
         <th>Actions</th>
       </tr>
 
       <% @users.each do |user| %>
       <tr>
-        <td><%= user.password %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= user.city %></td>
         <td><%= user.phone_number %></td>
         <td><%= user.points %></td>
+        <td><%= user.email %></td>
+        <td><%= user.password %></td>
         <td>
           <a href="/users/<%= user.id %>" class="btn btn-primary">Show</a>
-          <a href="/users/<%= user.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_user/<%= user.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
       <% end %>
