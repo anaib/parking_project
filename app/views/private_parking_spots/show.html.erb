@@ -5,6 +5,42 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+      <dt>Address</dt>
+      <dd><%= @private_parking_spot.address %></dd>
+
+      <dt>City</dt>
+      <dd><%= @private_parking_spot.city %></dd>
+
+      <dt>Zipcode</dt>
+      <dd><%= @private_parking_spot.zipcode %></dd>
+
+      <dt>Date</dt>
+      <dd><%= @private_parking_spot.date %></dd>
+
+      <dt>Time</dt>
+      <dd><%= @private_parking_spot.time %></dd>
+
+      <dt>Price</dt>
+      <dd><%= @private_parking_spot.price %></dd>
+
+      <dt>Pri offer user</dt>
+      <dd>
+        <% if @private_parking_spot.offer_user.present? %>
+          <a href="/users/<%= @private_parking_spot.pri_offer_user_id %>">
+            <%= @private_parking_spot.offer_user.created_at %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Pri accept user</dt>
+      <dd>
+        <% if @private_parking_spot.accept_user.present? %>
+          <a href="/users/<%= @private_parking_spot.pri_accept_user_id %>">
+            <%= @private_parking_spot.accept_user.created_at %>
+          </a>
+        <% end %>
+      </dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
