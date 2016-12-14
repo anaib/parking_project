@@ -102,13 +102,13 @@
         <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @public_parking_spot.description %></textarea>
       </div>
 
-      <!-- Label and input for accept_user_id -->
+      <!-- Label and input for pub_accept_user_id -->
       <div class="form-group">
-        <label for="accept_user_id" class="control-label">
-          Accept user
+        <label for="pub_accept_user_id" class="control-label">
+          Pub accept user
         </label>
 
-        <%= select_tag(:accept_user_id, options_from_collection_for_select(User.all, :id, :created_at, @public_parking_spot.accept_user_id), :class => "form-control") %>
+        <%= select_tag(:pub_accept_user_id, options_from_collection_for_select(User.all, :id, :created_at, @public_parking_spot.pub_accept_user_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for neighborhood -->

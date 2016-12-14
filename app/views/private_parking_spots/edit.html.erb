@@ -18,6 +18,78 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
+      <!-- Label and input for address -->
+      <div class="form-group">
+        <label for="address" class="control-label">
+          Address
+        </label>
+
+        <input type="text" id="address" name="address" placeholder="Address" class="form-control" value="<%= @private_parking_spot.address %>">
+      </div>
+
+      <!-- Label and input for city -->
+      <div class="form-group">
+        <label for="city" class="control-label">
+          City
+        </label>
+
+        <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @private_parking_spot.city %>">
+      </div>
+
+      <!-- Label and input for zipcode -->
+      <div class="form-group">
+        <label for="zipcode" class="control-label">
+          Zipcode
+        </label>
+
+        <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode" class="form-control" value="<%= @private_parking_spot.zipcode %>">
+      </div>
+
+      <!-- Label and input for date -->
+      <div class="form-group">
+        <label for="date" class="control-label">
+          Date
+        </label>
+
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @private_parking_spot.date %>">
+      </div>
+
+      <!-- Label and input for time -->
+      <div class="form-group">
+        <label for="time" class="control-label">
+          Time
+        </label>
+
+        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @private_parking_spot.time %>">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @private_parking_spot.price %>">
+      </div>
+
+      <!-- Label and input for pri_offer_user_id -->
+      <div class="form-group">
+        <label for="pri_offer_user_id" class="control-label">
+          Pri offer user
+        </label>
+
+        <%= select_tag(:pri_offer_user_id, options_from_collection_for_select(User.all, :id, :created_at, @private_parking_spot.pri_offer_user_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for pri_accept_user_id -->
+      <div class="form-group">
+        <label for="pri_accept_user_id" class="control-label">
+          Pri accept user
+        </label>
+
+        <%= select_tag(:pri_accept_user_id, options_from_collection_for_select(User.all, :id, :created_at, @private_parking_spot.pri_accept_user_id), :class => "form-control") %>
+      </div>
+
       <button class="btn btn-warning">
         Update Private Parking Spot
       </button>

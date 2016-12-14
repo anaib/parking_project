@@ -36,16 +36,16 @@
   </div>
 </div>
 
-<!-- A User has many parking_spots -->
+<!-- A User has many pub_parking_spots_offer -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Parking_spots
+        Pub_parking_spots_offer
       </li>
 
-      <% @user.parking_spots.each do |public_parking_spot| %>
+      <% @user.pub_parking_spots_offer.each do |public_parking_spot| %>
         <li class="list-group-item">
           <a href="/public_parking_spots/<%= public_parking_spot.id %>">
             <%= public_parking_spot.address %>
@@ -135,16 +135,16 @@
   </div>
 </div>
 
-<!-- A User has many spots_taken -->
+<!-- A User has many pub_spots_taken -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Spots_taken
+        Pub_spots_taken
       </li>
 
-      <% @user.spots_taken.each do |public_parking_spot| %>
+      <% @user.pub_spots_taken.each do |public_parking_spot| %>
         <li class="list-group-item">
           <a href="/public_parking_spots/<%= public_parking_spot.id %>">
             <%= public_parking_spot.address %>
@@ -158,6 +158,72 @@
                 <i class="fa fa-edit"></i>
               </a>
               <a href="/delete_public_parking_spot/<%= public_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many private_parking_spots_offer -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Private_parking_spots_offer
+      </li>
+
+      <% @user.private_parking_spots_offer.each do |private_parking_spot| %>
+        <li class="list-group-item">
+          <a href="/private_parking_spots/<%= private_parking_spot.id %>">
+            <%= private_parking_spot.address %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/private_parking_spots/<%= private_parking_spot.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <%if current_user == private_parking_spot.accept_user %>
+              <a href="/private_parking_spots/<%= private_parking_spot.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_private_parking_spot/<%= private_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many private_parking_spots_taken -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Private_parking_spots_taken
+      </li>
+
+      <% @user.private_parking_spots_taken.each do |private_parking_spot| %>
+        <li class="list-group-item">
+          <a href="/private_parking_spots/<%= private_parking_spot.id %>">
+            <%= private_parking_spot.address %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/private_parking_spots/<%= private_parking_spot.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <%if current_user == private_parking_spot.accept_user %>
+              <a href="/private_parking_spots/<%= private_parking_spot.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_private_parking_spot/<%= private_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
               </a>
             <% end %>
@@ -209,6 +275,68 @@
       </li>
 
       <% @user.offer_users.each do |user| %>
+        <li class="list-group-item">
+          <a href="/users/<%= user.id %>">
+            <%= user.created_at %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/users/<%= user.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/users/<%= user.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_user/<%= user.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many pri_accept_users -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Pri_accept_users
+      </li>
+
+      <% @user.pri_accept_users.each do |user| %>
+        <li class="list-group-item">
+          <a href="/users/<%= user.id %>">
+            <%= user.created_at %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/users/<%= user.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/users/<%= user.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_user/<%= user.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many pri_offer_users -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Pri_offer_users
+      </li>
+
+      <% @user.pri_offer_users.each do |user| %>
         <li class="list-group-item">
           <a href="/users/<%= user.id %>">
             <%= user.created_at %>

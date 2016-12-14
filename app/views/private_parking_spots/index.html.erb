@@ -9,11 +9,39 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
+        <th>Address</th>
+        <th>City</th>
+        <th>Zipcode</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Price</th>
+        <th>Pri offer user</th>
+        <th>Pri accept user</th>
         <th>Actions</th>
       </tr>
 
       <% @private_parking_spots.each do |private_parking_spot| %>
       <tr>
+        <td><%= private_parking_spot.address %></td>
+        <td><%= private_parking_spot.city %></td>
+        <td><%= private_parking_spot.zipcode %></td>
+        <td><%= private_parking_spot.date %></td>
+        <td><%= private_parking_spot.time %></td>
+        <td><%= private_parking_spot.price %></td>
+        <td>
+          <% if private_parking_spot.offer_user.present? %>
+            <a href="/users/<%= private_parking_spot.offer_user.id %>">
+              <%= private_parking_spot.offer_user.created_at %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if private_parking_spot.accept_user.present? %>
+            <a href="/users/<%= private_parking_spot.accept_user.id %>">
+              <%= private_parking_spot.accept_user.created_at %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/private_parking_spots/<%= private_parking_spot.id %>" class="btn btn-primary">Show</a>
           <a href="/private_parking_spots/<%= private_parking_spot.id %>/edit" class="btn btn-warning">Edit</a>

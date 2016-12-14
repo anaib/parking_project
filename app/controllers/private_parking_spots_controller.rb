@@ -1,7 +1,7 @@
 class PrivateParkingSpotsController < ApplicationController
   def index
     @q = PrivateParkingSpot.ransack(params[:q])
-    @private_parking_spots = @q.result(:distinct => true).includes().page(params[:page]).per(10)
+    @private_parking_spots = @q.result(:distinct => true).includes(:offer_user, :accept_user).page(params[:page]).per(10)
 
     render("private_parking_spots/index.html.erb")
   end
@@ -21,6 +21,14 @@ class PrivateParkingSpotsController < ApplicationController
   def create
     @private_parking_spot = PrivateParkingSpot.new
 
+    @private_parking_spot.address = params[:address]
+    @private_parking_spot.city = params[:city]
+    @private_parking_spot.zipcode = params[:zipcode]
+    @private_parking_spot.date = params[:date]
+    @private_parking_spot.time = params[:time]
+    @private_parking_spot.price = params[:price]
+    @private_parking_spot.pri_offer_user_id = params[:pri_offer_user_id]
+    @private_parking_spot.pri_accept_user_id = params[:pri_accept_user_id]
 
     save_status = @private_parking_spot.save
 
@@ -47,6 +55,14 @@ class PrivateParkingSpotsController < ApplicationController
   def update
     @private_parking_spot = PrivateParkingSpot.find(params[:id])
 
+    @private_parking_spot.address = params[:address]
+    @private_parking_spot.city = params[:city]
+    @private_parking_spot.zipcode = params[:zipcode]
+    @private_parking_spot.date = params[:date]
+    @private_parking_spot.time = params[:time]
+    @private_parking_spot.price = params[:price]
+    @private_parking_spot.pri_offer_user_id = params[:pri_offer_user_id]
+    @private_parking_spot.pri_accept_user_id = params[:pri_accept_user_id]
 
     save_status = @private_parking_spot.save
 

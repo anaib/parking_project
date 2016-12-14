@@ -1,9 +1,19 @@
 class User < ApplicationRecord
   # Direct associations
 
-  has_many   :spots_taken,
+  has_many   :private_parking_spots_taken,
+             :class_name => "PrivateParkingSpot",
+             :foreign_key => "pri_accept_user_id",
+             :dependent => :destroy
+
+  has_many   :private_parking_spots_offer,
+             :class_name => "PrivateParkingSpot",
+             :foreign_key => "pri_offer_user_id",
+             :dependent => :destroy
+
+  has_many   :pub_spots_taken,
              :class_name => "PublicParkingSpot",
-             :foreign_key => "accept_user_id",
+             :foreign_key => "pub_accept_user_id",
              :dependent => :destroy
 
   has_many   :information,
@@ -12,19 +22,27 @@ class User < ApplicationRecord
   has_many   :cars,
              :dependent => :destroy
 
-  has_many   :parking_spots,
+  has_many   :pub_parking_spots_offer,
              :class_name => "PublicParkingSpot",
-             :foreign_key => "offer_user_id",
+             :foreign_key => "pub_offer_user_id",
              :dependent => :destroy
 
   # Indirect associations
 
+  has_many   :pri_offer_users,
+             :through => :private_parking_spots_taken,
+             :source => :offer_user
+
+  has_many   :pri_accept_users,
+             :through => :private_parking_spots_offer,
+             :source => :accept_user
+
   has_many   :offer_users,
-             :through => :spots_taken,
+             :through => :pub_spots_taken,
              :source => :offer_user
 
   has_many   :accept_users,
-             :through => :parking_spots,
+             :through => :pub_parking_spots_offer,
              :source => :accept_user
 
   # Validations
