@@ -4,10 +4,11 @@ class CreatePrivateParkingSpots < ActiveRecord::Migration
       t.string :address
       t.string :city
       t.string :zipcode
-      t.string :date
-      t.string :time
-      t.string :price
+      t.date :pri_date
+      t.time :pri_time
+      t.integer :pri_price
       t.integer :pri_offer_user_id
+      t.integer :pri_points
       t.integer :pri_accept_user_id
 
       t.timestamps

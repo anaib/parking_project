@@ -12,7 +12,7 @@
         <th>Streets</th>
         <th>Time</th>
         <th>Thanks</th>
-        <th>Zipcode</th>
+        <th>Info</th>
         <th>Actions</th>
       </tr>
 
@@ -23,7 +23,7 @@
         <td><%= spots_avaiable.thanks %></td>
         <td>
           <% if spots_avaiable.neighborhood.present? %>
-            <a href="/information/<%= spots_avaiable.neighborhood.id %>">
+            <a href="/spots_informations/<%= spots_avaiable.neighborhood.id %>">
               <%= spots_avaiable.neighborhood.city %>
             </a>
           <% end %>

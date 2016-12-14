@@ -36,21 +36,21 @@ Rails.application.routes.draw do
   get "/delete_spots_avaiable/:id", :controller => "spots_avaiables", :action => "destroy"
   #------------------------------
 
-  # Routes for the Information resource:
+  # Routes for the Spots_information resource:
   # CREATE
-  get "/information/new", :controller => "information", :action => "new"
-  post "/create_information", :controller => "information", :action => "create"
+  get "/spots_informations/new", :controller => "spots_informations", :action => "new"
+  post "/create_spots_information", :controller => "spots_informations", :action => "create"
 
   # READ
-  get "/information", :controller => "information", :action => "index"
-  get "/information/:id", :controller => "information", :action => "show"
+  get "/spots_informations", :controller => "spots_informations", :action => "index"
+  get "/spots_informations/:id", :controller => "spots_informations", :action => "show"
 
   # UPDATE
-  get "/information/:id/edit", :controller => "information", :action => "edit"
-  post "/update_information/:id", :controller => "information", :action => "update"
+  get "/spots_informations/:id/edit", :controller => "spots_informations", :action => "edit"
+  post "/update_spots_information/:id", :controller => "spots_informations", :action => "update"
 
   # DELETE
-  get "/delete_information/:id", :controller => "information", :action => "destroy"
+  get "/delete_spots_information/:id", :controller => "spots_informations", :action => "destroy"
   #------------------------------
 
   # Routes for the Car resource:

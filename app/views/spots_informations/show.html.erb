@@ -1,42 +1,42 @@
 <div class="page-header">
-  <h3>Information #<%= @information.id %></h3>
+  <h3>Spots Information #<%= @spots_information.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>City</dt>
-      <dd><%= @information.city %></dd>
-
-      <dt>Zipcode</dt>
-      <dd><%= @information.zipcode %></dd>
+      <dd><%= @spots_information.city %></dd>
 
       <dt>User</dt>
       <dd>
-        <% if @information.user.present? %>
-          <a href="/users/<%= @information.user_id %>">
-            <%= @information.user.created_at %>
+        <% if @spots_information.user.present? %>
+          <a href="/users/<%= @spots_information.user_id %>">
+            <%= @spots_information.user.created_at %>
           </a>
         <% end %>
       </dd>
 
+      <dt>Zipcode</dt>
+      <dd><%= @spots_information.zipcode %></dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/information" class="btn btn-primary">
+      <a href="/spots_informations" class="btn btn-primary">
         Back
       </a>
-      <a href="/information/<%= @information.id %>/edit" class="btn btn-warning">
+      <a href="/spots_informations/<%= @spots_information.id %>/edit" class="btn btn-warning">
         Edit
       </a>
-      <a href="/delete_information/<%= @information.id %>" class="btn btn-danger" rel="nofollow">
+      <a href="/delete_spots_information/<%= @spots_information.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
     </div>
   </div>
 </div>
 
-<!-- A Information has many spots_avaiables -->
+<!-- A Spots information has many spots_avaiables -->
 
 <div class="row">
   <div class="col-md-12">
@@ -45,7 +45,7 @@
         Spots_avaiables
       </li>
 
-      <% @information.spots_avaiables.each do |spots_avaiable| %>
+      <% @spots_information.spots_avaiables.each do |spots_avaiable| %>
         <li class="list-group-item">
           <a href="/spots_avaiables/<%= spots_avaiable.id %>">
             <%= spots_avaiable.streets %>
@@ -95,13 +95,13 @@
         </label>
       </div>
 
-      <!-- Label and input for zipcode -->
+      <!-- Label and input for info_id -->
       <div class="form-group">
-        <label for="zipcode" class="control-label">
-          Zipcode
+        <label for="info_id" class="control-label">
+          Info
         </label>
 
-        <%= select_tag(:zipcode, options_from_collection_for_select(Information.all, :id, :city, @spots_avaiable.zipcode), :class => "form-control") %>
+        <%= select_tag(:info_id, options_from_collection_for_select(SpotsInformation.all, :id, :city), :class => "form-control") %>
       </div>
 
       <button class="btn btn-block btn-success">

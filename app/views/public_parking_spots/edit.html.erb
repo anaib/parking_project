@@ -84,13 +84,13 @@
         <input type="text" id="max_time" name="max_time" placeholder="Max time" class="form-control" value="<%= @public_parking_spot.max_time %>">
       </div>
 
-      <!-- Label and input for price -->
+      <!-- Label and input for pub_price -->
       <div class="form-group">
-        <label for="price" class="control-label">
-          Price
+        <label for="pub_price" class="control-label">
+          Pub price
         </label>
 
-        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @public_parking_spot.price %>">
+        <input type="text" id="pub_price" name="pub_price" placeholder="Pub price" class="form-control" value="<%= @public_parking_spot.pub_price %>">
       </div>
 
       <!-- Label and input for description -->
@@ -111,15 +111,6 @@
         <%= select_tag(:pub_accept_user_id, options_from_collection_for_select(User.all, :id, :created_at, @public_parking_spot.pub_accept_user_id), :class => "form-control") %>
       </div>
 
-      <!-- Label and input for neighborhood -->
-      <div class="form-group">
-        <label for="neighborhood" class="control-label">
-          Neighborhood
-        </label>
-
-        <input type="text" id="neighborhood" name="neighborhood" placeholder="Neighborhood" class="form-control" value="<%= @public_parking_spot.neighborhood %>">
-      </div>
-
       <!-- Label and input for already_paid -->
       <div class="checkbox">
         <label for="already_paid">
@@ -135,6 +126,24 @@
         </label>
 
         <input type="text" id="paid_time" name="paid_time" placeholder="Paid time" class="form-control" value="<%= @public_parking_spot.paid_time %>">
+      </div>
+
+      <!-- Label and input for pub_date -->
+      <div class="form-group">
+        <label for="pub_date" class="control-label">
+          Pub date
+        </label>
+
+        <input type="text" id="pub_date" name="pub_date" placeholder="Pub date" class="form-control" value="<%= @public_parking_spot.pub_date %>">
+      </div>
+
+      <!-- Label and input for pub_points -->
+      <div class="form-group">
+        <label for="pub_points" class="control-label">
+          Pub points
+        </label>
+
+        <input type="text" id="pub_points" name="pub_points" placeholder="Pub points" class="form-control" value="<%= @public_parking_spot.pub_points %>">
       </div>
 
       <button class="btn btn-warning">
