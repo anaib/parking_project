@@ -37,6 +37,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.integer :points
       t.string :email
       t.string :password
+      t.string :car_registration
 
       t.timestamps null: false
     end

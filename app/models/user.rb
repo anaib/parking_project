@@ -20,9 +20,6 @@ class User < ApplicationRecord
              :class_name => "SpotsInformation",
              :dependent => :destroy
 
-  has_many   :cars,
-             :dependent => :destroy
-
   has_many   :pub_parking_spots_offer,
              :class_name => "PublicParkingSpot",
              :foreign_key => "pub_offer_user_id",

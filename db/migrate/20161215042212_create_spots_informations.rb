@@ -4,6 +4,8 @@ class CreateSpotsInformations < ActiveRecord::Migration
       t.string :city
       t.integer :user_id
       t.string :zipcode
+      t.string :streets
+      t.boolean :thanks
 
       t.timestamps
 

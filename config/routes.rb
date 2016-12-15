@@ -19,23 +19,6 @@ Rails.application.routes.draw do
   get "/delete_private_parking_spot/:id", :controller => "private_parking_spots", :action => "destroy"
   #------------------------------
 
-  # Routes for the Spots_avaiable resource:
-  # CREATE
-  get "/spots_avaiables/new", :controller => "spots_avaiables", :action => "new"
-  post "/create_spots_avaiable", :controller => "spots_avaiables", :action => "create"
-
-  # READ
-  get "/spots_avaiables", :controller => "spots_avaiables", :action => "index"
-  get "/spots_avaiables/:id", :controller => "spots_avaiables", :action => "show"
-
-  # UPDATE
-  get "/spots_avaiables/:id/edit", :controller => "spots_avaiables", :action => "edit"
-  post "/update_spots_avaiable/:id", :controller => "spots_avaiables", :action => "update"
-
-  # DELETE
-  get "/delete_spots_avaiable/:id", :controller => "spots_avaiables", :action => "destroy"
-  #------------------------------
-
   # Routes for the Spots_information resource:
   # CREATE
   get "/spots_informations/new", :controller => "spots_informations", :action => "new"
@@ -51,23 +34,6 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_spots_information/:id", :controller => "spots_informations", :action => "destroy"
-  #------------------------------
-
-  # Routes for the Car resource:
-  # CREATE
-  get "/cars/new", :controller => "cars", :action => "new"
-  post "/create_car", :controller => "cars", :action => "create"
-
-  # READ
-  get "/cars", :controller => "cars", :action => "index"
-  get "/cars/:id", :controller => "cars", :action => "show"
-
-  # UPDATE
-  get "/cars/:id/edit", :controller => "cars", :action => "edit"
-  post "/update_car/:id", :controller => "cars", :action => "update"
-
-  # DELETE
-  get "/delete_car/:id", :controller => "cars", :action => "destroy"
   #------------------------------
 
   # Routes for the Public_parking_spot resource:

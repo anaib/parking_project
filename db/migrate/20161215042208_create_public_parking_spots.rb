@@ -7,15 +7,12 @@ class CreatePublicParkingSpots < ActiveRecord::Migration
       t.time :time
       t.string :car_type
       t.integer :pub_offer_user_id
-      t.string :type_of_parking
+      t.text :type_of_parking
       t.string :max_time
-      t.integer :pub_price
+      t.integer :price
       t.text :description
       t.integer :pub_accept_user_id
-      t.boolean :already_paid
-      t.time :paid_time
-      t.date :pub_date
-      t.integer :pub_points
+      t.integer :points
 
       t.timestamps
 
