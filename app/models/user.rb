@@ -1,7 +1,14 @@
 class User < ApplicationRecord
   # Direct associations
 
-  has_many   :reservations,
+  has_many   :accept_reservations,
+             :class_name => "Reservation",
+             :foreign_key => "accept_user_id",
+             :dependent => :destroy
+
+  has_many   :reservations_offer,
+             :class_name => "Reservation",
+             :foreign_key => "offer_user_id",
              :dependent => :destroy
 
   has_many   :private_parking_spots_taken,
@@ -30,19 +37,19 @@ class User < ApplicationRecord
 
   # Indirect associations
 
-  has_many   :pri_offer_users,
-             :through => :private_parking_spots_taken,
-             :source => :offer_user
+  has_many   :users,
+             :through => :accept_reservations,
+             :source => :user
 
-  has_many   :pri_accept_users,
-             :through => :private_parking_spots_offer,
+  has_many   :res_accept_users,
+             :through => :reservations_offer,
              :source => :accept_user
 
   has_many   :offer_users,
              :through => :pub_spots_taken,
              :source => :offer_user
 
-  has_many   :accept_users,
+  has_many   :accept_users_pub,
              :through => :pub_parking_spots_offer,
              :source => :accept_user
 

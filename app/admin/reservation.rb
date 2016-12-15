@@ -1,6 +1,6 @@
 ActiveAdmin.register Reservation do
 
- permit_params :city, :zipcode, :time, :date, :user_id
+ permit_params :city, :zipcode, :time, :date, :offer_user_id, :accept_user_id
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

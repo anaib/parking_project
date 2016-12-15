@@ -54,40 +54,9 @@
       </script>
 
 <div class="form-group">
-        <%= f.label :time, "Time" %>
-        <div class="row">
-          <div class='col-md-6 mb-1'>
-            <div class='input-group date' id='timegteqPicker'>
-              <%= f.text_field :time_gteq, :class => "form-control", :placeholder => "Time greater than or equal to" %>
-              <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-time"></span>
-              </span>
-              <script type="text/javascript">
-                $(function () {
-                    $('#timegteqPicker').datetimepicker({
-                      format: 'LT'
-                    });
-                });
-              </script>
-            </div>
-          </div>
-          <div class='col-md-6'>
-            <div class='input-group date' id='timelteqPicker'>
-              <%= f.text_field :time_lteq, :class => "form-control", :placeholder => "Time less than or equal to" %>
-              <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-time"></span>
-              </span>
-              <script type="text/javascript">
-                $(function () {
-                    $('#timelteqPicker').datetimepicker({
-                      format: 'LT'
-                    });
-                });
-              </script>
-            </div>
-          </div>
-        </div>
-      </div>
+    <%= f.label :time_cont, "Time contains" %>
+    <%= f.text_field :time_cont, :class => "form-control", :placeholder => "Time contains" %>
+  </div>
 
 <div class="form-group">
     <%= f.label :zipcode_cont, "Zipcode contains" %>
@@ -174,6 +143,46 @@
           });
       </script>
 
+<div class="form-group">
+          <%= f.label :created_at, "User Created at" %>
+          <div class="row">
+            <div class='col-md-6 mb-1'>
+              <div class='input-group date' id='accept_usergteqcreated_atPicker'>
+                  <%= f.text_field :accept_user_created_at_gteq, :class => "form-control", :placeholder => "User Created at greater than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+
+            <div class='col-md-6'>
+              <div class='input-group date' id='accept_userlteqcreated_atPicker'>
+                  <%= f.text_field :accept_user_created_at_lteq, :class => "form-control", :placeholder => "User Created at less than or equal to" %>
+                  <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <script type="text/javascript">
+          $(function () {
+              $('#accept_usergteqcreated_atPicker').datetimepicker({
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#accept_userlteqcreated_atPicker').datetimepicker({
+                  useCurrent: false,
+                  format: 'YYYY-MM-DD hh:mm:SS'
+              });
+              $('#accept_usergteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#accept_userlteqcreated_atPicker').data("DateTimePicker").minDate(e.date);
+              });
+              $('#accept_userlteqcreated_atPicker').on("dp.change", function (e) {
+                  $('#accept_usergteqcreated_atPicker').data("DateTimePicker").maxDate(e.date);
+              });
+          });
+      </script>
+
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
       <a href="/reservations" class="btn btn-default btn-block mb-1">Clear filters</a>
@@ -192,7 +201,8 @@
         <th>Zipcode</th>
         <th>Time</th>
         <th>Date</th>
-        <th>User</th>
+        <th>Offer user</th>
+        <th>Accept user</th>
         <th>Actions</th>
       </tr>
 
@@ -206,6 +216,13 @@
           <% if reservation.user.present? %>
             <a href="/users/<%= reservation.user.id %>">
               <%= reservation.user.created_at %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if reservation.accept_user.present? %>
+            <a href="/users/<%= reservation.accept_user.id %>">
+              <%= reservation.accept_user.created_at %>
             </a>
           <% end %>
         </td>

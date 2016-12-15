@@ -207,16 +207,16 @@
   </div>
 </div>
 
-<!-- A User has many reservations -->
+<!-- A User has many reservations_offer -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Reservations
+        Reservations_offer
       </li>
 
-      <% @user.reservations.each do |reservation| %>
+      <% @user.reservations_offer.each do |reservation| %>
         <li class="list-group-item">
           <a href="/reservations/<%= reservation.id %>">
             <%= reservation.city %>
@@ -225,7 +225,7 @@
             <a href="/reservations/<%= reservation.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == reservation.user %>
+            <%if current_user == reservation.accept_user %>
               <a href="/reservations/<%= reservation.id %>/edit" class="btn btn-warning">
                 <i class="fa fa-edit"></i>
               </a>
@@ -240,16 +240,49 @@
   </div>
 </div>
 
-<!-- A User has many accept_users -->
+<!-- A User has many accept_reservations -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Accept_users
+        Accept_reservations
       </li>
 
-      <% @user.accept_users.each do |user| %>
+      <% @user.accept_reservations.each do |reservation| %>
+        <li class="list-group-item">
+          <a href="/reservations/<%= reservation.id %>">
+            <%= reservation.city %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/reservations/<%= reservation.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <%if current_user == reservation.accept_user %>
+              <a href="/reservations/<%= reservation.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_reservation/<%= reservation.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many accept_users_pub -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Accept_users_pub
+      </li>
+
+      <% @user.accept_users_pub.each do |user| %>
         <li class="list-group-item">
           <a href="/users/<%= user.id %>">
             <%= user.created_at %>
@@ -302,16 +335,16 @@
   </div>
 </div>
 
-<!-- A User has many pri_accept_users -->
+<!-- A User has many res_accept_users -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Pri_accept_users
+        Res_accept_users
       </li>
 
-      <% @user.pri_accept_users.each do |user| %>
+      <% @user.res_accept_users.each do |user| %>
         <li class="list-group-item">
           <a href="/users/<%= user.id %>">
             <%= user.created_at %>
@@ -333,16 +366,16 @@
   </div>
 </div>
 
-<!-- A User has many pri_offer_users -->
+<!-- A User has many users -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Pri_offer_users
+        Users
       </li>
 
-      <% @user.pri_offer_users.each do |user| %>
+      <% @user.users.each do |user| %>
         <li class="list-group-item">
           <a href="/users/<%= user.id %>">
             <%= user.created_at %>
