@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
- permit_params :first_name, :last_name, :city, :phone_number, :points, :email, :password, :car_registration
+ permit_params :first_name, :last_name, :city, :phone_number, :points, :email, :password, :car_registration, :username
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
