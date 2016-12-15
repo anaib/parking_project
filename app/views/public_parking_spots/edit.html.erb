@@ -21,7 +21,7 @@
       <!-- Label and input for address -->
       <div class="form-group">
         <label for="address" class="control-label">
-          Address
+          Address or closest address
         </label>
 
         <input type="text" id="address" name="address" placeholder="Address" class="form-control" value="<%= @public_parking_spot.address %>">
@@ -39,7 +39,7 @@
       <!-- Label and input for zipcode -->
       <div class="form-group">
         <label for="zipcode" class="control-label">
-          Zipcode
+          Zipcode in XXXXX format
         </label>
 
         <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode" class="form-control" value="<%= @public_parking_spot.zipcode %>">
@@ -48,7 +48,7 @@
       <!-- Label and input for date -->
       <div class="form-group">
         <label for="date" class="control-label">
-          Date
+          Date in MM/DD/YYYY
         </label>
 
         <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @public_parking_spot.date %>">
@@ -57,7 +57,7 @@
       <!-- Label and input for starting_time -->
       <div class="form-group">
         <label for="starting_time" class="control-label">
-          Starting time
+          Starting time in 24 hour format - XX:XX
         </label>
 
         <input type="text" id="starting_time" name="starting_time" placeholder="Starting time" class="form-control" value="<%= @public_parking_spot.starting_time %>">
@@ -66,7 +66,7 @@
       <!-- Label and input for max_time -->
       <div class="form-group">
         <label for="max_time" class="control-label">
-          Max time
+          Max time available parking time in hours or mins
         </label>
 
         <input type="text" id="max_time" name="max_time" placeholder="Max time" class="form-control" value="<%= @public_parking_spot.max_time %>">
@@ -75,7 +75,7 @@
       <!-- Label and input for car_type -->
       <div class="form-group">
         <label for="car_type" class="control-label">
-          Car type
+          Car type - Space enough for a compact or sedan or SUV
         </label>
 
         <input type="text" id="car_type" name="car_type" placeholder="Car type" class="form-control" value="<%= @public_parking_spot.car_type %>">
@@ -84,22 +84,22 @@
       <!-- Label and input for street_parking_price -->
       <div class="form-group">
         <label for="street_parking_price" class="control-label">
-          Street parking price
+        Price
         </label>
 
-        <input type="text" id="street_parking_price" name="street_parking_price" placeholder="Street parking price" class="form-control" value="<%= @public_parking_spot.street_parking_price %>">
+        <input type="text" id="street_parking_price" name="street_parking_price" placeholder="Street parking price - $ per hour" class="form-control" value="<%= @public_parking_spot.street_parking_price %>">
       </div>
 
       <!-- Label and input for description -->
       <div class="form-group">
         <label for="description" class="control-label">
-          Description
+          Description - location of the spot from the address
         </label>
 
         <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @public_parking_spot.description %></textarea>
       </div>
 
-      <!-- Label and input for pub_offer_user_id -->
+      <!-- Label and input for pub_offer_user_id -
       <div class="form-group">
         <label for="pub_offer_user_id" class="control-label">
           Pub offer user
@@ -107,26 +107,22 @@
 
         <input type="text" id="pub_offer_user_id" name="pub_offer_user_id" placeholder="Pub offer user" class="form-control" value="<%= @public_parking_spot.pub_offer_user_id %>">
       </div>
+-->
 
       <!-- Label and input for points -->
       <div class="form-group">
         <label for="points" class="control-label">
-          Points
+          Points required to claim the spot
         </label>
 
         <input type="text" id="points" name="points" placeholder="Points" class="form-control" value="<%= @public_parking_spot.points %>">
       </div>
 
       <!-- Label and input for offer_user_id -->
-      <div class="form-group">
-        <label for="offer_user_id" class="control-label">
-          Offer user
-        </label>
 
-        <%= select_tag(:offer_user_id, options_from_collection_for_select(User.all, :id, :created_at, @public_parking_spot.offer_user_id), :class => "form-control") %>
-      </div>
+     <input type="hidden" name="offer_user_id" value="<%= @public_parking_spot.offer_user.id %>">
 
-      <!-- Label and input for accept_user_id -->
+      <!-- Label and input for accept_user_id
       <div class="form-group">
         <label for="accept_user_id" class="control-label">
           Accept user
@@ -134,6 +130,7 @@
 
         <%= select_tag(:accept_user_id, options_from_collection_for_select(User.all, :id, :created_at, @public_parking_spot.accept_user_id), :class => "form-control") %>
       </div>
+      -->
 
       <button class="btn btn-warning">
         Update Public Parking Spot

@@ -18,16 +18,39 @@ class ReservationsController < ApplicationController
     render("reservations/new.html.erb")
   end
 
-  def create
-    @reservation = Reservation.new
+  def reserve
 
-    @reservation.city = params[:city]
-    @reservation.zipcode = params[:zipcode]
-    @reservation.time = params[:time]
-    @reservation.date = params[:date]
-    @reservation.offer_user_id = params[:offer_user_id]
-    @reservation.accept_user_id = params[:accept_user_id]
-    @reservation.points = params[:points]
+    @reservation = Reservation.new
+    @public_parking_spot = PublicParkingSpot.find(params[:id])
+
+    if current_user == @public_parking_spot.offer_user
+      redirect_back(:fallback_location => "/", :notice => "YOU CANNOT RESERVE YOUR OWN PARKING SPOT!")
+    else
+
+    if current_user.points < @public_parking_spot.points
+      redirect_back(:fallback_location => "/", :notice => "YOU DON'T HAVE ENOUGH POINTS TO RESERVE A PARKING SPOT!")
+    else
+      @newpoints_accept = current_user.points - @public_parking_spot.points
+      @newpoints_offer = @public_parking_spot.offer_user.points + @public_parking_spot.points
+      @reservation.offer_points = @newpoints_offer
+      @reservation.accept_points = @newpoints_accept
+
+      @reservation.city = @public_parking_spot.city
+      @reservation.zipcode = @public_parking_spot.zipcode
+      @reservation.time = @public_parking_spot.starting_time
+      @reservation.offer_user_id = @public_parking_spot.offer_user_id
+      @reservation.date = @public_parking_spot.date
+      @reservation.points = @public_parking_spot.points
+      @reservation.accept_user_id = current_user.id
+
+      r_offer_user = User.find_by(:id => @reservation.offer_user_id)
+      r_accept_user = User.find_by(:id => @reservation.accept_user_id)
+
+    r_offer_user.points = @newpoints_offer
+    r_accept_user.points = @newpoints_accept
+
+    r_offer_user.save
+    r_accept_user.save
 
     save_status = @reservation.save
 
@@ -39,6 +62,7 @@ class ReservationsController < ApplicationController
         redirect_to("/reservations")
       else
         redirect_back(:fallback_location => "/", :notice => "Reservation created successfully.")
+        @public_parking_spot.destroy
       end
     else
       render("reservations/new.html.erb")
@@ -89,4 +113,6 @@ class ReservationsController < ApplicationController
       redirect_back(:fallback_location => "/", :notice => "Reservation deleted.")
     end
   end
+end
+end
 end

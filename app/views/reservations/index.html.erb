@@ -1,7 +1,6 @@
 <div class="page-header">
   <h1>
     Reservations
-    <a href="/reservations/new" class="btn btn-lg btn-success">New Reservation</a>
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
@@ -214,8 +213,10 @@
         <th>Time</th>
         <th>Date</th>
         <th>Offer user</th>
+        <th>Offer User points</th>
         <th>Accept user</th>
-        <th>Points</th>
+        <th>Accept User points</th>
+        <th>Transaction Points</th>
         <th>Actions</th>
       </tr>
 
@@ -228,22 +229,22 @@
         <td>
           <% if reservation.user.present? %>
             <a href="/users/<%= reservation.user.id %>">
-              <%= reservation.user.created_at %>
+              <%= reservation.user.username %>
             </a>
           <% end %>
         </td>
+        <td><%= reservation.offer_points %></td>
         <td>
           <% if reservation.accept_user.present? %>
             <a href="/users/<%= reservation.accept_user.id %>">
-              <%= reservation.accept_user.created_at %>
+              <%= reservation.accept_user.username %>
             </a>
           <% end %>
         </td>
+        <td><%= reservation.accept_points %></td>
         <td><%= reservation.points %></td>
         <td>
           <a href="/reservations/<%= reservation.id %>" class="btn btn-primary">Show</a>
-          <a href="/reservations/<%= reservation.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_reservation/<%= reservation.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
       <% end %>

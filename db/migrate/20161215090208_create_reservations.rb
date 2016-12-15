@@ -8,6 +8,7 @@ class CreateReservations < ActiveRecord::Migration
       t.integer :offer_user_id
       t.integer :accept_user_id
       t.integer :points
+    
 
       t.timestamps
 

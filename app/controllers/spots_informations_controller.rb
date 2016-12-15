@@ -13,9 +13,29 @@ class SpotsInformationsController < ApplicationController
   end
 
   def new
-    @spots_information = SpotsInformation.new
+  @spots_information = SpotsInformation.new
 
     render("spots_informations/new.html.erb")
+  end
+
+  def thanks
+  #  @spots_information = SpotsInformation.new
+    @spots_information = SpotsInformation.find(params[:id])
+    @newpoints = @spots_information.user.points + 200
+    @newpoints_t = current_user.points - 25
+    @spots_information.pts = @newpoints
+
+    save_status = @spots_information.save
+
+    r_user = User.find_by(:id => @spots_information.user_id)
+    r_user.points = @newpoints
+
+    current_user.points =   @newpoints_t
+
+    r_user.save
+    current_user.save
+
+    render("spots_informations/show.html.erb")
   end
 
   def create
@@ -82,5 +102,5 @@ class SpotsInformationsController < ApplicationController
     else
       redirect_back(:fallback_location => "/", :notice => "Spots information deleted.")
     end
-  end
+end
 end

@@ -12,7 +12,7 @@
       <dd>
         <% if @spots_information.user.present? %>
           <a href="/users/<%= @spots_information.user_id %>">
-            <%= @spots_information.user.created_at %>
+            <%= @spots_information.user.username %>
           </a>
         <% end %>
       </dd>

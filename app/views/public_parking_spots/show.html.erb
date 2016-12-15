@@ -32,9 +32,6 @@
       <dt>Description</dt>
       <dd><%= @public_parking_spot.description %></dd>
 
-      <dt>Pub offer user</dt>
-      <dd><%= @public_parking_spot.pub_offer_user_id %></dd>
-
       <dt>Points</dt>
       <dd><%= @public_parking_spot.points %></dd>
 
@@ -42,19 +39,11 @@
       <dd>
         <% if @public_parking_spot.offer_user.present? %>
           <a href="/users/<%= @public_parking_spot.offer_user_id %>">
-            <%= @public_parking_spot.offer_user.created_at %>
+            <%= @public_parking_spot.offer_user.username %>
           </a>
         <% end %>
       </dd>
 
-      <dt>Accept user</dt>
-      <dd>
-        <% if @public_parking_spot.accept_user.present? %>
-          <a href="/users/<%= @public_parking_spot.accept_user_id %>">
-            <%= @public_parking_spot.accept_user.created_at %>
-          </a>
-        <% end %>
-      </dd>
 
     </dl>
 

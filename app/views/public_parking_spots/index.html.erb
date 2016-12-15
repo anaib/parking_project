@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
-    Public parking spots
-    <a href="/public_parking_spots/new" class="btn btn-lg btn-success">New Public parking spot</a>
+    Parking spots
+    <a href="/public_parking_spots/new" class="btn btn-lg btn-success">New parking spot</a>
   </h1>
 </div>
 
@@ -16,12 +16,10 @@
         <th>Starting time</th>
         <th>Max time</th>
         <th>Car type</th>
-        <th>Street parking price</th>
-        <th>Description</th>
-        <th>Pub offer user</th>
+        <th>Price</th>
         <th>Points</th>
-        <th>Offer user</th>
-        <th>Accept user</th>
+        <th>User</th>
+        <th>Reserve</th>
         <th>Actions</th>
       </tr>
 
@@ -35,27 +33,25 @@
         <td><%= public_parking_spot.max_time %></td>
         <td><%= public_parking_spot.car_type %></td>
         <td><%= public_parking_spot.street_parking_price %></td>
-        <td><%= public_parking_spot.description %></td>
-        <td><%= public_parking_spot.pub_offer_user_id %></td>
         <td><%= public_parking_spot.points %></td>
         <td>
           <% if public_parking_spot.offer_user.present? %>
             <a href="/users/<%= public_parking_spot.offer_user.id %>">
-              <%= public_parking_spot.offer_user.created_at %>
+              <%= public_parking_spot.offer_user.username %>
             </a>
           <% end %>
         </td>
         <td>
-          <% if public_parking_spot.accept_user.present? %>
-            <a href="/users/<%= public_parking_spot.accept_user.id %>">
-              <%= public_parking_spot.accept_user.created_at %>
-            </a>
-          <% end %>
+            <a href="/reserve_public_parking_spots/<%= public_parking_spot.id %>" class="btn btn-warning">Reserve</a>
         </td>
         <td>
           <a href="/public_parking_spots/<%= public_parking_spot.id %>" class="btn btn-primary">Show</a>
-          <a href="/public_parking_spots/<%= public_parking_spot.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_public_parking_spot/<%= public_parking_spot.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+
+          <% if current_user == public_parking_spot.offer_user %>
+            <a href="/public_parking_spots/<%= public_parking_spot.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_public_parking_spot/<%= public_parking_spot.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
+
         </td>
       </tr>
       <% end %>

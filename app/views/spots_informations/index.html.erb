@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>
-    Spots informations
+    Popular Parking Spots Information
     <a href="/spots_informations/new" class="btn btn-lg btn-success">New Spots information</a>
   </h1>
 </div>
@@ -13,7 +13,10 @@
         <th>User</th>
         <th>Zipcode</th>
         <th>Streets</th>
+        <th>Thanks</th>
+        <th>Points</th>
         <th>Actions</th>
+
       </tr>
 
       <% @spots_informations.each do |spots_information| %>
@@ -22,17 +25,28 @@
         <td>
           <% if spots_information.user.present? %>
             <a href="/users/<%= spots_information.user.id %>">
-              <%= spots_information.user.created_at %>
+              <%= spots_information.user.username %>
             </a>
           <% end %>
         </td>
         <td><%= spots_information.zipcode %></td>
         <td><%= spots_information.streets %></td>
         <td>
+          <% if current_user != spots_information.user %>
+            <a href="/thanks_spots_informations/<%= spots_information.id %>" class="btn btn-warning">Thanks</a>
+            <% end %>
+        </td>
+        <td><%= spots_information.user.points %></td>
+        <td>
           <a href="/spots_informations/<%= spots_information.id %>" class="btn btn-primary">Show</a>
+
+          <% if current_user == spots_information.user %>
           <a href="/spots_informations/<%= spots_information.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_spots_information/<%= spots_information.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
+
         </td>
+
       </tr>
       <% end %>
     </table>

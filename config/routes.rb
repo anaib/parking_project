@@ -2,10 +2,6 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root :to => "public_parking_spots#index"
-  # Routes for the Reservation resource:
-  # CREATE
-  get "/reservations/new", :controller => "reservations", :action => "new"
-  post "/create_reservation", :controller => "reservations", :action => "create"
 
   # READ
   get "/reservations", :controller => "reservations", :action => "index"
@@ -17,23 +13,6 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_reservation/:id", :controller => "reservations", :action => "destroy"
-  #------------------------------
-
-  # Routes for the Private_parking_spot resource:
-  # CREATE
-  get "/private_parking_spots/new", :controller => "private_parking_spots", :action => "new"
-  post "/create_private_parking_spot", :controller => "private_parking_spots", :action => "create"
-
-  # READ
-  get "/private_parking_spots", :controller => "private_parking_spots", :action => "index"
-  get "/private_parking_spots/:id", :controller => "private_parking_spots", :action => "show"
-
-  # UPDATE
-  get "/private_parking_spots/:id/edit", :controller => "private_parking_spots", :action => "edit"
-  post "/update_private_parking_spot/:id", :controller => "private_parking_spots", :action => "update"
-
-  # DELETE
-  get "/delete_private_parking_spot/:id", :controller => "private_parking_spots", :action => "destroy"
   #------------------------------
 
   # Routes for the Spots_information resource:
@@ -51,6 +30,9 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_spots_information/:id", :controller => "spots_informations", :action => "destroy"
+
+  # THANKS
+  get "/thanks_spots_informations/:id", :controller => "spots_informations", :action => "thanks"
   #------------------------------
 
   # Routes for the Public_parking_spot resource:
@@ -68,6 +50,9 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_public_parking_spot/:id", :controller => "public_parking_spots", :action => "destroy"
+
+  # RESERVE
+  get "/reserve_public_parking_spots/:id", :controller => "reservations", :action => "reserve"
   #------------------------------
 
   devise_for :users
