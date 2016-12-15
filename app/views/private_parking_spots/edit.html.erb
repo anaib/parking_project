@@ -54,22 +54,22 @@
         <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @private_parking_spot.date %>">
       </div>
 
-      <!-- Label and input for time -->
+      <!-- Label and input for starting_time -->
       <div class="form-group">
-        <label for="time" class="control-label">
-          Time
+        <label for="starting_time" class="control-label">
+          Starting time
         </label>
 
-        <input type="text" id="time" name="time" placeholder="Time" class="form-control" value="<%= @private_parking_spot.time %>">
+        <input type="text" id="starting_time" name="starting_time" placeholder="Starting time" class="form-control" value="<%= @private_parking_spot.starting_time %>">
       </div>
 
-      <!-- Label and input for pri_offer_user_id -->
+      <!-- Label and input for duration -->
       <div class="form-group">
-        <label for="pri_offer_user_id" class="control-label">
-          Pri offer user
+        <label for="duration" class="control-label">
+          Duration
         </label>
 
-        <%= select_tag(:pri_offer_user_id, options_from_collection_for_select(User.all, :id, :created_at, @private_parking_spot.pri_offer_user_id), :class => "form-control") %>
+        <input type="text" id="duration" name="duration" placeholder="Duration" class="form-control" value="<%= @private_parking_spot.duration %>">
       </div>
 
       <!-- Label and input for points -->
@@ -81,13 +81,49 @@
         <input type="text" id="points" name="points" placeholder="Points" class="form-control" value="<%= @private_parking_spot.points %>">
       </div>
 
-      <!-- Label and input for pri_accept_user_id -->
+      <!-- Label and input for car_type -->
       <div class="form-group">
-        <label for="pri_accept_user_id" class="control-label">
-          Pri accept user
+        <label for="car_type" class="control-label">
+          Car type
         </label>
 
-        <%= select_tag(:pri_accept_user_id, options_from_collection_for_select(User.all, :id, :created_at, @private_parking_spot.pri_accept_user_id), :class => "form-control") %>
+        <input type="text" id="car_type" name="car_type" placeholder="Car type" class="form-control" value="<%= @private_parking_spot.car_type %>">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @private_parking_spot.description %></textarea>
+      </div>
+
+      <!-- Label and input for offer_user_id -->
+      <div class="form-group">
+        <label for="offer_user_id" class="control-label">
+          Offer user
+        </label>
+
+        <%= select_tag(:offer_user_id, options_from_collection_for_select(User.all, :id, :created_at, @private_parking_spot.offer_user_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for accept_user_id -->
+      <div class="form-group">
+        <label for="accept_user_id" class="control-label">
+          Accept user
+        </label>
+
+        <%= select_tag(:accept_user_id, options_from_collection_for_select(User.all, :id, :created_at, @private_parking_spot.accept_user_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for parking_price -->
+      <div class="form-group">
+        <label for="parking_price" class="control-label">
+          Parking price
+        </label>
+
+        <input type="text" id="parking_price" name="parking_price" placeholder="Parking price" class="form-control" value="<%= @private_parking_spot.parking_price %>">
       </div>
 
       <button class="btn btn-warning">

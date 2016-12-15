@@ -54,13 +54,31 @@
         <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @reservation.date %>">
       </div>
 
-      <!-- Label and input for user_id -->
+      <!-- Label and input for offer_user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
+        <label for="offer_user_id" class="control-label">
+          Offer user
         </label>
 
-        <%= select_tag(:user_id, options_from_collection_for_select(User.all, :id, :created_at, @reservation.user_id), :class => "form-control") %>
+        <%= select_tag(:offer_user_id, options_from_collection_for_select(User.all, :id, :created_at, @reservation.offer_user_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for accept_user_id -->
+      <div class="form-group">
+        <label for="accept_user_id" class="control-label">
+          Accept user
+        </label>
+
+        <%= select_tag(:accept_user_id, options_from_collection_for_select(User.all, :id, :created_at, @reservation.accept_user_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for points -->
+      <div class="form-group">
+        <label for="points" class="control-label">
+          Points
+        </label>
+
+        <input type="text" id="points" name="points" placeholder="Points" class="form-control" value="<%= @reservation.points %>">
       </div>
 
       <button class="btn btn-warning">

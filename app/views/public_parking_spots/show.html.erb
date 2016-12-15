@@ -14,41 +14,47 @@
       <dt>Zipcode</dt>
       <dd><%= @public_parking_spot.zipcode %></dd>
 
-      <dt>Time</dt>
-      <dd><%= @public_parking_spot.time %></dd>
+      <dt>Date</dt>
+      <dd><%= @public_parking_spot.date %></dd>
+
+      <dt>Starting time</dt>
+      <dd><%= @public_parking_spot.starting_time %></dd>
+
+      <dt>Max time</dt>
+      <dd><%= @public_parking_spot.max_time %></dd>
 
       <dt>Car type</dt>
       <dd><%= @public_parking_spot.car_type %></dd>
 
+      <dt>Street parking price</dt>
+      <dd><%= @public_parking_spot.street_parking_price %></dd>
+
+      <dt>Description</dt>
+      <dd><%= @public_parking_spot.description %></dd>
+
       <dt>Pub offer user</dt>
+      <dd><%= @public_parking_spot.pub_offer_user_id %></dd>
+
+      <dt>Points</dt>
+      <dd><%= @public_parking_spot.points %></dd>
+
+      <dt>Offer user</dt>
       <dd>
         <% if @public_parking_spot.offer_user.present? %>
-          <a href="/users/<%= @public_parking_spot.pub_offer_user_id %>">
+          <a href="/users/<%= @public_parking_spot.offer_user_id %>">
             <%= @public_parking_spot.offer_user.created_at %>
           </a>
         <% end %>
       </dd>
 
-      <dt>Max time</dt>
-      <dd><%= @public_parking_spot.max_time %></dd>
-
-      <dt>Price</dt>
-      <dd><%= @public_parking_spot.price %></dd>
-
-      <dt>Description</dt>
-      <dd><%= @public_parking_spot.description %></dd>
-
-      <dt>Pub accept user</dt>
+      <dt>Accept user</dt>
       <dd>
         <% if @public_parking_spot.accept_user.present? %>
-          <a href="/users/<%= @public_parking_spot.pub_accept_user_id %>">
+          <a href="/users/<%= @public_parking_spot.accept_user_id %>">
             <%= @public_parking_spot.accept_user.created_at %>
           </a>
         <% end %>
       </dd>
-
-      <dt>Points</dt>
-      <dd><%= @public_parking_spot.points %></dd>
 
     </dl>
 
@@ -56,14 +62,12 @@
       <a href="/public_parking_spots" class="btn btn-primary">
         Back
       </a>
-      <% if current_user == @public_parking_spot.offer_user %>
-        <a href="/public_parking_spots/<%= @public_parking_spot.id %>/edit" class="btn btn-warning">
-          Edit
-        </a>
-        <a href="/delete_public_parking_spot/<%= @public_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
-          Delete
-        </a>
-      <% end %>
+      <a href="/public_parking_spots/<%= @public_parking_spot.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_public_parking_spot/<%= @public_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
     </div>
   </div>
 </div>

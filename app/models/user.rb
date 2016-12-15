@@ -1,49 +1,64 @@
 class User < ApplicationRecord
   # Direct associations
 
-  has_many   :reservations,
-             :dependent => :destroy
-
-  has_many   :private_parking_spots_taken,
+  has_many   :private_parking_spots_accept,
              :class_name => "PrivateParkingSpot",
-             :foreign_key => "pri_accept_user_id",
+             :foreign_key => "accept_user_id",
              :dependent => :destroy
 
   has_many   :private_parking_spots_offer,
              :class_name => "PrivateParkingSpot",
-             :foreign_key => "pri_offer_user_id",
+             :foreign_key => "offer_user_id",
              :dependent => :destroy
 
-  has_many   :pub_spots_taken,
+  has_many   :public_parking_spots_accept,
              :class_name => "PublicParkingSpot",
-             :foreign_key => "pub_accept_user_id",
+             :foreign_key => "accept_user_id",
+             :dependent => :destroy
+
+  has_many   :public_parking_spots_offer,
+             :class_name => "PublicParkingSpot",
+             :foreign_key => "offer_user_id",
+             :dependent => :destroy
+
+  has_many   :accept_reservations,
+             :class_name => "Reservation",
+             :foreign_key => "accept_user_id",
+             :dependent => :destroy
+
+  has_many   :reservations_offer,
+             :class_name => "Reservation",
+             :foreign_key => "offer_user_id",
              :dependent => :destroy
 
   has_many   :information,
              :class_name => "SpotsInformation",
              :dependent => :destroy
 
-  has_many   :pub_parking_spots_offer,
-             :class_name => "PublicParkingSpot",
-             :foreign_key => "pub_offer_user_id",
-             :dependent => :destroy
-
   # Indirect associations
 
-  has_many   :pri_offer_users,
-             :through => :private_parking_spots_taken,
+  has_many   :offer_users_pri,
+             :through => :private_parking_spots_accept,
              :source => :offer_user
 
-  has_many   :pri_accept_users,
+  has_many   :accept_users_pri,
              :through => :private_parking_spots_offer,
              :source => :accept_user
 
-  has_many   :offer_users,
-             :through => :pub_spots_taken,
+  has_many   :offer_users_pub,
+             :through => :public_parking_spots_accept,
              :source => :offer_user
 
-  has_many   :accept_users,
-             :through => :pub_parking_spots_offer,
+  has_many   :accept_users_pub,
+             :through => :public_parking_spots_offer,
+             :source => :accept_user
+
+  has_many   :users,
+             :through => :accept_reservations,
+             :source => :user
+
+  has_many   :res_accept_users,
+             :through => :reservations_offer,
              :source => :accept_user
 
   # Validations

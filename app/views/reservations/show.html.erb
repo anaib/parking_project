@@ -17,14 +17,26 @@
       <dt>Date</dt>
       <dd><%= @reservation.date %></dd>
 
-      <dt>User</dt>
+      <dt>Offer user</dt>
       <dd>
         <% if @reservation.user.present? %>
-          <a href="/users/<%= @reservation.user_id %>">
+          <a href="/users/<%= @reservation.offer_user_id %>">
             <%= @reservation.user.created_at %>
           </a>
         <% end %>
       </dd>
+
+      <dt>Accept user</dt>
+      <dd>
+        <% if @reservation.accept_user.present? %>
+          <a href="/users/<%= @reservation.accept_user_id %>">
+            <%= @reservation.accept_user.created_at %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Points</dt>
+      <dd><%= @reservation.points %></dd>
 
     </dl>
 

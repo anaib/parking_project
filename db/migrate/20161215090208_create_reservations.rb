@@ -3,9 +3,11 @@ class CreateReservations < ActiveRecord::Migration
     create_table :reservations do |t|
       t.string :city
       t.string :zipcode
-      t.time :time
+      t.string :time
       t.date :date
-      t.integer :user_id
+      t.integer :offer_user_id
+      t.integer :accept_user_id
+      t.integer :points
 
       t.timestamps
 

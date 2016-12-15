@@ -5,7 +5,6 @@ class CreateSpotsInformations < ActiveRecord::Migration
       t.integer :user_id
       t.string :zipcode
       t.text :streets
-      t.boolean :thanks
 
       t.timestamps
 

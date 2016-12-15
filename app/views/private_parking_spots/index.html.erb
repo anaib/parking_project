@@ -13,10 +13,14 @@
         <th>City</th>
         <th>Zipcode</th>
         <th>Date</th>
-        <th>Time</th>
-        <th>Pri offer user</th>
+        <th>Starting time</th>
+        <th>Duration</th>
         <th>Points</th>
-        <th>Pri accept user</th>
+        <th>Car type</th>
+        <th>Description</th>
+        <th>Offer user</th>
+        <th>Accept user</th>
+        <th>Parking price</th>
         <th>Actions</th>
       </tr>
 
@@ -26,7 +30,11 @@
         <td><%= private_parking_spot.city %></td>
         <td><%= private_parking_spot.zipcode %></td>
         <td><%= private_parking_spot.date %></td>
-        <td><%= private_parking_spot.time %></td>
+        <td><%= private_parking_spot.starting_time %></td>
+        <td><%= private_parking_spot.duration %></td>
+        <td><%= private_parking_spot.points %></td>
+        <td><%= private_parking_spot.car_type %></td>
+        <td><%= private_parking_spot.description %></td>
         <td>
           <% if private_parking_spot.offer_user.present? %>
             <a href="/users/<%= private_parking_spot.offer_user.id %>">
@@ -34,7 +42,6 @@
             </a>
           <% end %>
         </td>
-        <td><%= private_parking_spot.points %></td>
         <td>
           <% if private_parking_spot.accept_user.present? %>
             <a href="/users/<%= private_parking_spot.accept_user.id %>">
@@ -42,6 +49,7 @@
             </a>
           <% end %>
         </td>
+        <td><%= private_parking_spot.parking_price %></td>
         <td>
           <a href="/private_parking_spots/<%= private_parking_spot.id %>" class="btn btn-primary">Show</a>
           <a href="/private_parking_spots/<%= private_parking_spot.id %>/edit" class="btn btn-warning">Edit</a>
