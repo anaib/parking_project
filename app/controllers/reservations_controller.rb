@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   def index
     @q = Reservation.ransack(params[:q])
-    @reservations = @q.result(:distinct => true).includes(:user).page(params[:page]).per(10)
+    @reservations = @q.result(:distinct => true).includes(:user, :accept_user).page(params[:page]).per(10)
 
     render("reservations/index.html.erb")
   end
@@ -25,7 +25,9 @@ class ReservationsController < ApplicationController
     @reservation.zipcode = params[:zipcode]
     @reservation.time = params[:time]
     @reservation.date = params[:date]
-    @reservation.user_id = params[:user_id]
+    @reservation.offer_user_id = params[:offer_user_id]
+    @reservation.accept_user_id = params[:accept_user_id]
+    @reservation.points = params[:points]
 
     save_status = @reservation.save
 
@@ -56,7 +58,9 @@ class ReservationsController < ApplicationController
     @reservation.zipcode = params[:zipcode]
     @reservation.time = params[:time]
     @reservation.date = params[:date]
-    @reservation.user_id = params[:user_id]
+    @reservation.offer_user_id = params[:offer_user_id]
+    @reservation.accept_user_id = params[:accept_user_id]
+    @reservation.points = params[:points]
 
     save_status = @reservation.save
 

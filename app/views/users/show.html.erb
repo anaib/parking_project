@@ -42,39 +42,6 @@
   </div>
 </div>
 
-<!-- A User has many pub_parking_spots_offer -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Pub_parking_spots_offer
-      </li>
-
-      <% @user.pub_parking_spots_offer.each do |public_parking_spot| %>
-        <li class="list-group-item">
-          <a href="/public_parking_spots/<%= public_parking_spot.id %>">
-            <%= public_parking_spot.address %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/public_parking_spots/<%= public_parking_spot.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <%if current_user == public_parking_spot.accept_user %>
-              <a href="/public_parking_spots/<%= public_parking_spot.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_public_parking_spot/<%= public_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
 <!-- A User has many information -->
 
 <div class="row">
@@ -93,14 +60,12 @@
             <a href="/spots_informations/<%= spots_information.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == spots_information.user %>
-              <a href="/spots_informations/<%= spots_information.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_spots_information/<%= spots_information.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
+            <a href="/spots_informations/<%= spots_information.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_spots_information/<%= spots_information.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
           </div>
         </li>
       <% end %>
@@ -108,16 +73,78 @@
   </div>
 </div>
 
-<!-- A User has many pub_spots_taken -->
+<!-- A User has many reservations_offer -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Pub_spots_taken
+        Reservations_offer
       </li>
 
-      <% @user.pub_spots_taken.each do |public_parking_spot| %>
+      <% @user.reservations_offer.each do |reservation| %>
+        <li class="list-group-item">
+          <a href="/reservations/<%= reservation.id %>">
+            <%= reservation.city %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/reservations/<%= reservation.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/reservations/<%= reservation.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_reservation/<%= reservation.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many accept_reservations -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Accept_reservations
+      </li>
+
+      <% @user.accept_reservations.each do |reservation| %>
+        <li class="list-group-item">
+          <a href="/reservations/<%= reservation.id %>">
+            <%= reservation.city %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/reservations/<%= reservation.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/reservations/<%= reservation.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_reservation/<%= reservation.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many public_parking_spots_offer -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Public_parking_spots_offer
+      </li>
+
+      <% @user.public_parking_spots_offer.each do |public_parking_spot| %>
         <li class="list-group-item">
           <a href="/public_parking_spots/<%= public_parking_spot.id %>">
             <%= public_parking_spot.address %>
@@ -126,14 +153,43 @@
             <a href="/public_parking_spots/<%= public_parking_spot.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == public_parking_spot.accept_user %>
-              <a href="/public_parking_spots/<%= public_parking_spot.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_public_parking_spot/<%= public_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
+            <a href="/public_parking_spots/<%= public_parking_spot.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_public_parking_spot/<%= public_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many public_parking_spots_accept -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Public_parking_spots_accept
+      </li>
+
+      <% @user.public_parking_spots_accept.each do |public_parking_spot| %>
+        <li class="list-group-item">
+          <a href="/public_parking_spots/<%= public_parking_spot.id %>">
+            <%= public_parking_spot.address %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/public_parking_spots/<%= public_parking_spot.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/public_parking_spots/<%= public_parking_spot.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_public_parking_spot/<%= public_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
           </div>
         </li>
       <% end %>
@@ -159,14 +215,12 @@
             <a href="/private_parking_spots/<%= private_parking_spot.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == private_parking_spot.accept_user %>
-              <a href="/private_parking_spots/<%= private_parking_spot.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_private_parking_spot/<%= private_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
+            <a href="/private_parking_spots/<%= private_parking_spot.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_private_parking_spot/<%= private_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
           </div>
         </li>
       <% end %>
@@ -174,16 +228,16 @@
   </div>
 </div>
 
-<!-- A User has many private_parking_spots_taken -->
+<!-- A User has many private_parking_spots_accept -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Private_parking_spots_taken
+        Private_parking_spots_accept
       </li>
 
-      <% @user.private_parking_spots_taken.each do |private_parking_spot| %>
+      <% @user.private_parking_spots_accept.each do |private_parking_spot| %>
         <li class="list-group-item">
           <a href="/private_parking_spots/<%= private_parking_spot.id %>">
             <%= private_parking_spot.address %>
@@ -192,47 +246,12 @@
             <a href="/private_parking_spots/<%= private_parking_spot.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <%if current_user == private_parking_spot.accept_user %>
-              <a href="/private_parking_spots/<%= private_parking_spot.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_private_parking_spot/<%= private_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<!-- A User has many reservations -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Reservations
-      </li>
-
-      <% @user.reservations.each do |reservation| %>
-        <li class="list-group-item">
-          <a href="/reservations/<%= reservation.id %>">
-            <%= reservation.city %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/reservations/<%= reservation.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
+            <a href="/private_parking_spots/<%= private_parking_spot.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
             </a>
-            <%if current_user == reservation.user %>
-              <a href="/reservations/<%= reservation.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
-              </a>
-              <a href="/delete_reservation/<%= reservation.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash-o"></i>
-              </a>
-            <% end %>
+            <a href="/delete_private_parking_spot/<%= private_parking_spot.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
           </div>
         </li>
       <% end %>
@@ -240,16 +259,16 @@
   </div>
 </div>
 
-<!-- A User has many accept_users -->
+<!-- A User has many res_accept_users -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Accept_users
+        Res_accept_users
       </li>
 
-      <% @user.accept_users.each do |user| %>
+      <% @user.res_accept_users.each do |user| %>
         <li class="list-group-item">
           <a href="/users/<%= user.id %>">
             <%= user.created_at %>
@@ -271,16 +290,16 @@
   </div>
 </div>
 
-<!-- A User has many offer_users -->
+<!-- A User has many users -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Offer_users
+        Users
       </li>
 
-      <% @user.offer_users.each do |user| %>
+      <% @user.users.each do |user| %>
         <li class="list-group-item">
           <a href="/users/<%= user.id %>">
             <%= user.created_at %>
@@ -302,16 +321,16 @@
   </div>
 </div>
 
-<!-- A User has many pri_accept_users -->
+<!-- A User has many accept_users_pub -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Pri_accept_users
+        Accept_users_pub
       </li>
 
-      <% @user.pri_accept_users.each do |user| %>
+      <% @user.accept_users_pub.each do |user| %>
         <li class="list-group-item">
           <a href="/users/<%= user.id %>">
             <%= user.created_at %>
@@ -333,16 +352,78 @@
   </div>
 </div>
 
-<!-- A User has many pri_offer_users -->
+<!-- A User has many offer_users_pub -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Pri_offer_users
+        Offer_users_pub
       </li>
 
-      <% @user.pri_offer_users.each do |user| %>
+      <% @user.offer_users_pub.each do |user| %>
+        <li class="list-group-item">
+          <a href="/users/<%= user.id %>">
+            <%= user.created_at %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/users/<%= user.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/users/<%= user.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_user/<%= user.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many accept_users_pri -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Accept_users_pri
+      </li>
+
+      <% @user.accept_users_pri.each do |user| %>
+        <li class="list-group-item">
+          <a href="/users/<%= user.id %>">
+            <%= user.created_at %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/users/<%= user.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/users/<%= user.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_user/<%= user.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A User has many offer_users_pri -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Offer_users_pri
+      </li>
+
+      <% @user.offer_users_pri.each do |user| %>
         <li class="list-group-item">
           <a href="/users/<%= user.id %>">
             <%= user.created_at %>

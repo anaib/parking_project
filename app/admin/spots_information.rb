@@ -1,6 +1,6 @@
 ActiveAdmin.register SpotsInformation do
 
- permit_params :city, :user_id, :zipcode, :streets, :thanks
+ permit_params :city, :user_id, :zipcode, :streets
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

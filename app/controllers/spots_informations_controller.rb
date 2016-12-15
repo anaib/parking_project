@@ -25,7 +25,6 @@ class SpotsInformationsController < ApplicationController
     @spots_information.user_id = params[:user_id]
     @spots_information.zipcode = params[:zipcode]
     @spots_information.streets = params[:streets]
-    @spots_information.thanks = params[:thanks]
 
     save_status = @spots_information.save
 
@@ -56,7 +55,6 @@ class SpotsInformationsController < ApplicationController
     @spots_information.user_id = params[:user_id]
     @spots_information.zipcode = params[:zipcode]
     @spots_information.streets = params[:streets]
-    @spots_information.thanks = params[:thanks]
 
     save_status = @spots_information.save
 
