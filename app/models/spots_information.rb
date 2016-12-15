@@ -7,4 +7,8 @@ class SpotsInformation < ApplicationRecord
 
   # Validations
 
+  validates :streets, :presence => true
+
+  validates :zipcode, :presence => true
+
 end
