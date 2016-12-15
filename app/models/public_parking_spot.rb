@@ -13,4 +13,14 @@ class PublicParkingSpot < ApplicationRecord
 
   # Validations
 
+  validates :address, :presence => true
+
+  validates :city, :presence => true
+
+  validates :points, :presence => true
+
+  validates :time, :presence => true
+
+  validates :zipcode, :presence => true
+
 end

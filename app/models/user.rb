@@ -48,6 +48,8 @@ class User < ApplicationRecord
 
   # Validations
 
+  validates :car_registration, :presence => true
+
   validates :city, :presence => true
 
   validates :first_name, :presence => true
@@ -57,6 +59,10 @@ class User < ApplicationRecord
   validates :phone_number, :uniqueness => true
 
   validates :phone_number, :presence => true
+
+  validates :username, :uniqueness => true
+
+  validates :username, :presence => true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
