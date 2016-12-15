@@ -204,6 +204,39 @@
   </div>
 </div>
 
+<!-- A User has many reservations -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Reservations
+      </li>
+
+      <% @user.reservations.each do |reservation| %>
+        <li class="list-group-item">
+          <a href="/reservations/<%= reservation.id %>">
+            <%= reservation.city %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/reservations/<%= reservation.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <%if current_user == reservation.user %>
+              <a href="/reservations/<%= reservation.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+              <a href="/delete_reservation/<%= reservation.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
 <!-- A User has many accept_users -->
 
 <div class="row">
