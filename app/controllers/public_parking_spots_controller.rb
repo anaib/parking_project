@@ -39,13 +39,10 @@ class PublicParkingSpotsController < ApplicationController
     @public_parking_spot.pub_offer_user_id = params[:pub_offer_user_id]
     @public_parking_spot.type_of_parking = params[:type_of_parking]
     @public_parking_spot.max_time = params[:max_time]
-    @public_parking_spot.pub_price = params[:pub_price]
+    @public_parking_spot.price = params[:price]
     @public_parking_spot.description = params[:description]
     @public_parking_spot.pub_accept_user_id = params[:pub_accept_user_id]
-    @public_parking_spot.already_paid = params[:already_paid]
-    @public_parking_spot.paid_time = params[:paid_time]
-    @public_parking_spot.pub_date = params[:pub_date]
-    @public_parking_spot.pub_points = params[:pub_points]
+    @public_parking_spot.points = params[:points]
 
     save_status = @public_parking_spot.save
 
@@ -80,13 +77,10 @@ class PublicParkingSpotsController < ApplicationController
     @public_parking_spot.pub_offer_user_id = params[:pub_offer_user_id]
     @public_parking_spot.type_of_parking = params[:type_of_parking]
     @public_parking_spot.max_time = params[:max_time]
-    @public_parking_spot.pub_price = params[:pub_price]
+    @public_parking_spot.price = params[:price]
     @public_parking_spot.description = params[:description]
     @public_parking_spot.pub_accept_user_id = params[:pub_accept_user_id]
-    @public_parking_spot.already_paid = params[:already_paid]
-    @public_parking_spot.paid_time = params[:paid_time]
-    @public_parking_spot.pub_date = params[:pub_date]
-    @public_parking_spot.pub_points = params[:pub_points]
+    @public_parking_spot.points = params[:points]
 
     save_status = @public_parking_spot.save
 

@@ -12,11 +12,10 @@
         <th>Address</th>
         <th>City</th>
         <th>Zipcode</th>
-        <th>Pri date</th>
-        <th>Pri time</th>
-        <th>Pri price</th>
+        <th>Date</th>
+        <th>Time</th>
         <th>Pri offer user</th>
-        <th>Pri points</th>
+        <th>Points</th>
         <th>Pri accept user</th>
         <th>Actions</th>
       </tr>
@@ -26,9 +25,8 @@
         <td><%= private_parking_spot.address %></td>
         <td><%= private_parking_spot.city %></td>
         <td><%= private_parking_spot.zipcode %></td>
-        <td><%= private_parking_spot.pri_date %></td>
-        <td><%= private_parking_spot.pri_time %></td>
-        <td><%= private_parking_spot.pri_price %></td>
+        <td><%= private_parking_spot.date %></td>
+        <td><%= private_parking_spot.time %></td>
         <td>
           <% if private_parking_spot.offer_user.present? %>
             <a href="/users/<%= private_parking_spot.offer_user.id %>">
@@ -36,7 +34,7 @@
             </a>
           <% end %>
         </td>
-        <td><%= private_parking_spot.pri_points %></td>
+        <td><%= private_parking_spot.points %></td>
         <td>
           <% if private_parking_spot.accept_user.present? %>
             <a href="/users/<%= private_parking_spot.accept_user.id %>">

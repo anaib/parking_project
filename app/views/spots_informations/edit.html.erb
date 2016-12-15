@@ -45,6 +45,23 @@
         <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode" class="form-control" value="<%= @spots_information.zipcode %>">
       </div>
 
+      <!-- Label and input for streets -->
+      <div class="form-group">
+        <label for="streets" class="control-label">
+          Streets
+        </label>
+
+        <input type="text" id="streets" name="streets" placeholder="Streets" class="form-control" value="<%= @spots_information.streets %>">
+      </div>
+
+      <!-- Label and input for thanks -->
+      <div class="checkbox">
+        <label for="thanks">
+          <input type="checkbox" id="thanks" name="thanks" value="1" <%= "checked" if @spots_information.thanks %>>
+          Thanks
+        </label>
+      </div>
+
       <button class="btn btn-warning">
         Update Spots Information
       </button>

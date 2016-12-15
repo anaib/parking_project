@@ -1,13 +1,12 @@
 class SpotsInformationsController < ApplicationController
   def index
     @q = SpotsInformation.ransack(params[:q])
-    @spots_informations = @q.result(:distinct => true).includes(:user, :spots_avaiables).page(params[:page]).per(10)
+    @spots_informations = @q.result(:distinct => true).includes(:user).page(params[:page]).per(10)
 
     render("spots_informations/index.html.erb")
   end
 
   def show
-    @spots_avaiable = SpotsAvaiable.new
     @spots_information = SpotsInformation.find(params[:id])
 
     render("spots_informations/show.html.erb")
@@ -25,6 +24,8 @@ class SpotsInformationsController < ApplicationController
     @spots_information.city = params[:city]
     @spots_information.user_id = params[:user_id]
     @spots_information.zipcode = params[:zipcode]
+    @spots_information.streets = params[:streets]
+    @spots_information.thanks = params[:thanks]
 
     save_status = @spots_information.save
 
@@ -54,6 +55,8 @@ class SpotsInformationsController < ApplicationController
     @spots_information.city = params[:city]
     @spots_information.user_id = params[:user_id]
     @spots_information.zipcode = params[:zipcode]
+    @spots_information.streets = params[:streets]
+    @spots_information.thanks = params[:thanks]
 
     save_status = @spots_information.save
 
