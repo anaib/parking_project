@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :reservations,
+             :dependent => :destroy
+
   has_many   :private_parking_spots_taken,
              :class_name => "PrivateParkingSpot",
              :foreign_key => "pri_accept_user_id",
